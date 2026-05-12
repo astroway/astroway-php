@@ -9,17 +9,14 @@ use Astroway\Errors\ApiError;
 use Astroway\Errors\AuthenticationError;
 use Astroway\Errors\BadRequestError;
 use Astroway\Errors\RateLimitError;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Middleware;
-use GuzzleHttp\Psr7\Response;
+use Astroway\Tests\Support\MockHttpClient;
+use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 
 final class AstrowayTest extends TestCase
 {
-    /** @var array<int, array{request: RequestInterface, response: Response, error: mixed, options: array<string, mixed>}> */
-    private array $history = [];
+    private MockHttpClient $mock;
 
     public function testConstructorRequiresApiKey(): void
     {
@@ -36,8 +33,7 @@ final class AstrowayTest extends TestCase
             'date' => '1990-07-14', 'time' => '14:30:00',
             'timezoneOffset' => 3, 'latitude' => 50.45, 'longitude' => 30.52,
         ]);
-        /** @var RequestInterface $req */
-        $req = $this->history[0]['request'];
+        $req = $this->mock->requests()[0];
         self::assertSame('aw_test_secret', $req->getHeaderLine('x-api-key'));
         self::assertSame('', $req->getHeaderLine('authorization'));
         self::assertSame('sdk-php', $req->getHeaderLine('x-astroway-channel'));
@@ -51,8 +47,7 @@ final class AstrowayTest extends TestCase
             authScheme: 'bearer',
         );
         $aw->post('/chart', body: []);
-        /** @var RequestInterface $req */
-        $req = $this->history[0]['request'];
+        $req = $this->mock->requests()[0];
         self::assertSame('Bearer aw_test_secret', $req->getHeaderLine('authorization'));
         self::assertSame('', $req->getHeaderLine('x-api-key'));
     }
@@ -142,7 +137,7 @@ final class AstrowayTest extends TestCase
 
         $result = $aw->post('/chart', body: []);
         self::assertSame(['retried' => true], $result);
-        self::assertCount(2, $this->history);
+        self::assertCount(2, $this->mock->requests());
     }
 
     public function testDoesNotRetry401(): void
@@ -155,12 +150,51 @@ final class AstrowayTest extends TestCase
         try {
             $aw->post('/chart', body: []);
         } finally {
-            self::assertCount(1, $this->history);
+            self::assertCount(1, $this->mock->requests());
         }
     }
 
+    public function testQueryStringEncoded(): void
+    {
+        $aw = $this->makeClient([
+            new Response(200, [], '{"ok":true,"data":{"ok":true}}'),
+        ]);
+        $aw->get('/geo/search', ['q' => 'Kyiv, UA', 'limit' => 3]);
+        $req = $this->mock->requests()[0];
+        $uri = (string) $req->getUri();
+        self::assertStringContainsString('q=Kyiv%2C+UA', $uri);
+        self::assertStringContainsString('limit=3', $uri);
+    }
+
+    public function testJsonBodySerialized(): void
+    {
+        $aw = $this->makeClient([
+            new Response(200, [], '{"ok":true,"data":{}}'),
+        ]);
+        $aw->post('/chart', body: ['date' => '1990-07-14', 'tags' => ['a', 'b']]);
+        $req = $this->mock->requests()[0];
+        self::assertSame('application/json', $req->getHeaderLine('content-type'));
+        $body = json_decode((string) $req->getBody(), true);
+        self::assertSame(['date' => '1990-07-14', 'tags' => ['a', 'b']], $body);
+    }
+
+    public function testCustomHttpClientInjected(): void
+    {
+        // BYOC contract: passing httpClient explicitly skips discovery.
+        $custom = new MockHttpClient([
+            new Response(200, [], '{"ok":true,"data":{"injected":true}}'),
+        ]);
+        $aw = new Astroway([
+            'apiKey' => 'aw_test_secret',
+            'httpClient' => $custom,
+        ]);
+        $result = $aw->post('/chart', body: []);
+        self::assertSame(['injected' => true], $result);
+        self::assertCount(1, $custom->requests());
+    }
+
     /**
-     * @param list<Response>                                                                          $responses
+     * @param list<\Nyholm\Psr7\Response>                                                                 $responses
      * @param array{maxRetries?: int, baseDelayMs?: int, maxDelayMs?: int, retryableStatuses?: list<int>} $retry
      */
     private function makeClient(
@@ -168,23 +202,13 @@ final class AstrowayTest extends TestCase
         string $authScheme = 'header',
         array $retry = [],
     ): Astroway {
-        $mock = new MockHandler($responses);
-        $stack = HandlerStack::create($mock);
+        $this->mock = new MockHttpClient($responses);
 
-        $aw = new Astroway([
+        return new Astroway([
             'apiKey' => 'aw_test_secret',
             'authScheme' => $authScheme,
             'retry' => $retry,
-            'handlerStack' => $stack,
+            'httpClient' => $this->mock,
         ]);
-
-        // Push history AFTER Astroway pushes its retry middleware so the
-        // history middleware sits closer to the handler and records each
-        // retry attempt as a separate entry (instead of one entry for the
-        // overall retried request).
-        $this->history = [];
-        $stack->push(Middleware::history($this->history));
-
-        return $aw;
     }
 }

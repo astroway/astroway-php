@@ -6,11 +6,16 @@ namespace Astroway\Errors;
 
 use Throwable;
 
-/** HTTP 429 — rate limit exceeded. retryAfterSeconds taken from Retry-After when present. */
+/**
+ * HTTP 429 — rate limit exceeded. ``$retryAfterSeconds`` (inherited from
+ * :class:`ApiError`) carries the ``Retry-After`` value when present.
+ *
+ * Distinct from :class:`QuotaExceededError`: rate-limit means short-window
+ * throttling (back off and try again), while quota-exceeded means you ran out
+ * of credits and need to top up or wait for the period to reset.
+ */
 class RateLimitError extends ApiError
 {
-    public readonly ?int $retryAfterSeconds;
-
     public function __construct(
         string $message,
         ?int $status = null,
@@ -19,8 +24,11 @@ class RateLimitError extends ApiError
         ?string $requestId = null,
         ?int $retryAfterSeconds = null,
         ?Throwable $previous = null,
+        ?int $creditsRemaining = null,
     ) {
-        parent::__construct($message, $status, $errorCode, $body, $requestId, $previous);
-        $this->retryAfterSeconds = $retryAfterSeconds;
+        parent::__construct(
+            $message, $status, $errorCode, $body, $requestId, $previous,
+            $creditsRemaining, $retryAfterSeconds,
+        );
     }
 }

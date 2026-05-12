@@ -1,0 +1,10 @@
+parameters:
+    level: 6
+    paths:
+        - src
+    excludePaths:
+        # Auto-generated files have intentional dynamic returns and broad
+        # mixed types; tightening them is the job of 1.0.0, not 0.1.x.
+        - src/HasServices.php
+        - src/Namespaces/*
+    treatPhpDocTypesAsCertain: false
