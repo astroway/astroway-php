@@ -52,6 +52,47 @@ final class AstrowayTest extends TestCase
         self::assertSame('', $req->getHeaderLine('x-api-key'));
     }
 
+    public function testLangOptionSetsAcceptLanguage(): void
+    {
+        $this->mock = new MockHttpClient([new Response(200, [], json_encode(['ok' => true, 'data' => []]))]);
+        $aw = new Astroway([
+            'apiKey' => 'aw_test',
+            'lang' => 'hi',
+            'httpClient' => $this->mock,
+        ]);
+        $aw->post('/horoscope/daily', body: ['sign' => 'leo']);
+        $req = $this->mock->requests()[0];
+        self::assertSame('hi', $req->getHeaderLine('accept-language'));
+        self::assertSame('hi', $aw->lang);
+    }
+
+    public function testLangUnsetEmitsNoAcceptLanguage(): void
+    {
+        $this->mock = new MockHttpClient([new Response(200, [], json_encode(['ok' => true, 'data' => []]))]);
+        $aw = new Astroway([
+            'apiKey' => 'aw_test',
+            'httpClient' => $this->mock,
+        ]);
+        $aw->post('/horoscope/daily', body: ['sign' => 'leo']);
+        $req = $this->mock->requests()[0];
+        self::assertSame('', $req->getHeaderLine('accept-language'));
+        self::assertNull($aw->lang);
+    }
+
+    public function testDefaultHeadersAcceptLanguageWinsOverLang(): void
+    {
+        $this->mock = new MockHttpClient([new Response(200, [], json_encode(['ok' => true, 'data' => []]))]);
+        $aw = new Astroway([
+            'apiKey' => 'aw_test',
+            'lang' => 'hi',
+            'defaultHeaders' => ['Accept-Language' => 'de'],
+            'httpClient' => $this->mock,
+        ]);
+        $aw->post('/horoscope/daily', body: ['sign' => 'leo']);
+        $req = $this->mock->requests()[0];
+        self::assertSame('de', $req->getHeaderLine('accept-language'));
+    }
+
     public function testRaisesAuthenticationErrorOn401(): void
     {
         $aw = $this->makeClient([

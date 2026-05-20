@@ -50,7 +50,7 @@ class Astroway
 {
     use HasServices;
 
-    public const VERSION = '1.0.0';
+    public const VERSION = '1.1.0';
 
     public const DEFAULT_BASE_URL = 'https://api.astroway.info/v1';
 
@@ -68,6 +68,7 @@ class Astroway
     private readonly array $defaultHeaders;
     private readonly ?CacheInterface $cache;
     private readonly ?int $cacheTtlSeconds;
+    public readonly ?string $lang;
 
     /**
      * @param array{
@@ -83,6 +84,7 @@ class Astroway
      *     idempotency?: 'auto'|'off'|callable(): string,
      *     cache?: CacheInterface,
      *     cacheTtlSeconds?: int|null,
+     *     lang?: string,
      * } $options
      */
     public function __construct(array $options)
@@ -120,8 +122,17 @@ class Astroway
         $this->requestFactory = $options['requestFactory'] ?? Psr17FactoryDiscovery::findRequestFactory();
         $this->streamFactory = $options['streamFactory'] ?? Psr17FactoryDiscovery::findStreamFactory();
 
+        // Inject Accept-Language into defaults if 'lang' option is set.
+        // Caller-supplied defaultHeaders 'Accept-Language' wins. Server
+        // (api-calc v2.30.0+) resolves the header against 21 active langs
+        // and routes into AI prompt instructions for /horoscope/* + /interpret/*.
+        $langHeader = isset($options['lang']) && is_string($options['lang']) && $options['lang'] !== ''
+            ? ['Accept-Language' => $options['lang']]
+            : [];
+        $this->lang = $langHeader === [] ? null : $options['lang'];
         $this->defaultHeaders = array_merge(
             $this->buildDefaultHeaders(),
+            $langHeader,
             $options['defaultHeaders'] ?? [],
         );
 
