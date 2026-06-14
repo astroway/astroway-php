@@ -234,6 +234,40 @@ final class AstrowayTest extends TestCase
         self::assertCount(1, $custom->requests());
     }
 
+    public function testVersionHitsVersionEndpointWithGet(): void
+    {
+        $payload = [
+            'version' => '2.81.1',
+            'build_commit' => 'abc1234',
+            'started_at' => '2026-06-13T00:00:00.000Z',
+            'uptime_seconds' => 42,
+            'docs_url' => 'https://api.astroway.info/docs/api/',
+        ];
+        $aw = $this->makeClient([
+            new Response(200, [], json_encode(['ok' => true, 'data' => $payload])),
+        ]);
+        $result = $aw->version();
+        $req = $this->mock->requests()[0];
+        self::assertSame('GET', $req->getMethod());
+        self::assertStringEndsWith('/version', $req->getUri()->getPath());
+        self::assertSame($payload, $result);
+    }
+
+    public function testHealthHitsHealthEndpointWithGet(): void
+    {
+        $aw = $this->makeClient([
+            new Response(200, [], json_encode(['ok' => true, 'data' => [
+                'status' => 'ok', 'version' => '2.81.1', 'uptime_seconds' => 7,
+                'timestamp' => '2026-06-13T00:00:00.000Z',
+            ]])),
+        ]);
+        $result = $aw->health();
+        $req = $this->mock->requests()[0];
+        self::assertSame('GET', $req->getMethod());
+        self::assertStringEndsWith('/health', $req->getUri()->getPath());
+        self::assertSame('ok', $result['status']);
+    }
+
     /**
      * @param list<\Nyholm\Psr7\Response>                                                                 $responses
      * @param array{maxRetries?: int, baseDelayMs?: int, maxDelayMs?: int, retryableStatuses?: list<int>} $retry

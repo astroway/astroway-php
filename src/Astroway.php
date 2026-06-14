@@ -50,7 +50,7 @@ class Astroway
 {
     use HasServices;
 
-    public const VERSION = '1.1.0';
+    public const VERSION = '1.2.0';
 
     public const DEFAULT_BASE_URL = 'https://api.astroway.info/v1';
 
@@ -321,6 +321,39 @@ class Astroway
     public function delete(string $path): mixed
     {
         return $this->request('DELETE', $path);
+    }
+
+    /**
+     * Deploy metadata for SDK self-check.
+     *
+     * Wraps the free, no-auth `GET /v1/version` — returns
+     * `{ version, build_commit, started_at, uptime_seconds, docs_url }`.
+     * `build_commit` uniquely identifies the running deploy, handy for
+     * support-ticket triage and detecting breaking changes on boot. No credits.
+     *
+     * @return array<string, mixed>
+     */
+    public function version(): array
+    {
+        /** @var array<string, mixed> $data */
+        $data = $this->get('/version');
+
+        return $data;
+    }
+
+    /**
+     * Liveness probe — `{ status, version, uptime_seconds, timestamp }`.
+     *
+     * Thinner counterpart to {@see version()}; wraps the free, no-auth `GET /v1/health`.
+     *
+     * @return array<string, mixed>
+     */
+    public function health(): array
+    {
+        /** @var array<string, mixed> $data */
+        $data = $this->get('/health');
+
+        return $data;
     }
 
     /**
