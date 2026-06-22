@@ -1892,6 +1892,31 @@ final class VedicService
     }
 
     /**
+     * Jaimini — Argala / Virodhargala scan (POST /vedic/jaimini/argala-analysis).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function jaiminiArgalaAnalysis(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/vedic/jaimini/argala-analysis', $opts);
+    }
+
+    /**
      * Jaimini — Aspects (Rasi + Graha drishti) (POST /vedic/jaimini/aspects).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
@@ -1939,6 +1964,31 @@ final class VedicService
         }
 
         return $this->client->request('POST', '/vedic/jaimini/atmakaraka-navamsa', $opts);
+    }
+
+    /**
+     * Jaimini — Atmakaraka rotation (timeline) (POST /vedic/jaimini/atmakaraka-rotation).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function jaiminiAtmakarakaRotation(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/vedic/jaimini/atmakaraka-rotation', $opts);
     }
 
     /**
@@ -3842,6 +3892,56 @@ final class VedicService
     }
 
     /**
+     * Yogas — Jaimini Karaka yoga (all 8 karakas) (POST /vedic/yogas/jaimini/karaka-yoga).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function yogasJaiminiKarakaYoga(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/vedic/yogas/jaimini/karaka-yoga', $opts);
+    }
+
+    /**
+     * Yogas — Karakamsa chart (12-house projection) (POST /vedic/yogas/jaimini/karakamsa).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function yogasJaiminiKarakamsa(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/vedic/yogas/jaimini/karakamsa', $opts);
+    }
+
+    /**
      * Yogas — Jaimini Raja yoga (POST /vedic/yogas/jaimini/raja).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
@@ -3864,6 +3964,31 @@ final class VedicService
         }
 
         return $this->client->request('POST', '/vedic/yogas/jaimini/raja', $opts);
+    }
+
+    /**
+     * Yogas — Shubha-graha (functional natures) (POST /vedic/yogas/jaimini/shubha-graha).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function yogasJaiminiShubhaGraha(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/vedic/yogas/jaimini/shubha-graha', $opts);
     }
 
     /**

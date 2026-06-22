@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace Astroway;
 
 use Astroway\Errors\APIConnectionError;
-use Astroway\Errors\APITimeoutError;
 use Astroway\Errors\ApiError;
+use Astroway\Errors\APITimeoutError;
 use Astroway\Errors\Classify;
 use Astroway\Internal\CacheKey;
 use Astroway\Internal\CachePolicy;
 use Astroway\Internal\Idempotency;
 use Astroway\Internal\LoggingClient;
 use Astroway\Internal\RetryClient;
-use Psr\SimpleCache\CacheInterface;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Psr\Http\Client\ClientInterface;
@@ -23,6 +22,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Log\LoggerInterface;
+use Psr\SimpleCache\CacheInterface;
 
 /**
  * Official AstroWay API client.
@@ -50,7 +50,7 @@ class Astroway
 {
     use HasServices;
 
-    public const VERSION = '1.2.0';
+    public const VERSION = '1.3.0';
 
     public const DEFAULT_BASE_URL = 'https://api.astroway.info/v1';
 
@@ -439,7 +439,13 @@ class Astroway
         }
 
         throw Classify::fromStatus(
-            $status, $message, $code, $body, $requestId, $retryAfter, $creditsRemaining,
+            $status,
+            $message,
+            $code,
+            $body,
+            $requestId,
+            $retryAfter,
+            $creditsRemaining,
         );
     }
 

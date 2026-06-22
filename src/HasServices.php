@@ -16,6 +16,7 @@ use Astroway\Namespaces\AntisciaService;
 use Astroway\Namespaces\ArabicPartsService;
 use Astroway\Namespaces\AshtakavargaService;
 use Astroway\Namespaces\AspectBarService;
+use Astroway\Namespaces\AspectsService;
 use Astroway\Namespaces\AspectTimelineService;
 use Astroway\Namespaces\BaziService;
 use Astroway\Namespaces\BusinessService;
@@ -53,6 +54,7 @@ use Astroway\Namespaces\HellenisticService;
 use Astroway\Namespaces\HoraryService;
 use Astroway\Namespaces\HorizonService;
 use Astroway\Namespaces\HoroscopeService;
+use Astroway\Namespaces\HousesService;
 use Astroway\Namespaces\HumanDesignService;
 use Astroway\Namespaces\HylegService;
 use Astroway\Namespaces\IchingService;
@@ -64,11 +66,12 @@ use Astroway\Namespaces\LunarCalendarService;
 use Astroway\Namespaces\LunarReturnService;
 use Astroway\Namespaces\MayanService;
 use Astroway\Namespaces\McpService;
-use Astroway\Namespaces\MidpointTreesService;
 use Astroway\Namespaces\MidpointsService;
+use Astroway\Namespaces\MidpointTreesService;
 use Astroway\Namespaces\MinorProgressionsService;
 use Astroway\Namespaces\ModernService;
 use Astroway\Namespaces\MoonAspectsService;
+use Astroway\Namespaces\MoonPhaseService;
 use Astroway\Namespaces\MoonVocService;
 use Astroway\Namespaces\NakshatrasService;
 use Astroway\Namespaces\NumerologyService;
@@ -103,8 +106,8 @@ use Astroway\Namespaces\TarotService;
 use Astroway\Namespaces\TertiaryProgressionsService;
 use Astroway\Namespaces\TransitCalendarService;
 use Astroway\Namespaces\TransitsService;
-use Astroway\Namespaces\VedicService;
 use Astroway\Namespaces\VedicDivisionalService;
+use Astroway\Namespaces\VedicService;
 use Astroway\Namespaces\WebhooksService;
 use Astroway\Namespaces\WellnessService;
 use Astroway\Namespaces\WhitelabelService;
@@ -168,6 +171,11 @@ trait HasServices
     public function aspectTimeline(): AspectTimelineService
     {
         return $this->services['aspectTimeline'] ??= new AspectTimelineService($this);
+    }
+
+    public function aspects(): AspectsService
+    {
+        return $this->services['aspects'] ??= new AspectsService($this);
     }
 
     public function bazi(): BaziService
@@ -350,6 +358,11 @@ trait HasServices
         return $this->services['horoscope'] ??= new HoroscopeService($this);
     }
 
+    public function houses(): HousesService
+    {
+        return $this->services['houses'] ??= new HousesService($this);
+    }
+
     public function humanDesign(): HumanDesignService
     {
         return $this->services['humanDesign'] ??= new HumanDesignService($this);
@@ -428,6 +441,11 @@ trait HasServices
     public function moonAspects(): MoonAspectsService
     {
         return $this->services['moonAspects'] ??= new MoonAspectsService($this);
+    }
+
+    public function moonPhase(): MoonPhaseService
+    {
+        return $this->services['moonPhase'] ??= new MoonPhaseService($this);
     }
 
     public function moonVoc(): MoonVocService
