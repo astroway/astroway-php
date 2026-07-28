@@ -17,7 +17,7 @@ final class AcgZonesService
     }
 
     /**
-     * A*C*G Influence Zones (POST /acg-zones).
+     * A*C*G Lines Near a Point (POST /acg-zones).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options

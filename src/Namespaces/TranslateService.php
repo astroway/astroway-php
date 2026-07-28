@@ -9,20 +9,20 @@ namespace Astroway\Namespaces;
 
 use Astroway\Astroway;
 
-/** Service for acg.* endpoints. */
-final class AcgService
+/** Service for translate.* endpoints. */
+final class TranslateService
 {
     public function __construct(private readonly Astroway $client)
     {
     }
 
     /**
-     * A*C*G by Life Category (POST /acg/by-category).
+     * Translate (astro-aware) (POST /translate/astro).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
      */
-    public function byCategory(array|object|null $body = null, array $options = []): mixed
+    public function astro(array|object|null $body = null, array $options = []): mixed
     {
         $opts = [];
         if ($body !== null) {
@@ -38,16 +38,16 @@ final class AcgService
             $opts['idempotencyKey'] = $options['idempotencyKey'];
         }
 
-        return $this->client->request('POST', '/acg/by-category', $opts);
+        return $this->client->request('POST', '/translate/astro', $opts);
     }
 
     /**
-     * Astrocartography (A*C*G) (POST /acg).
+     * Translate batch (POST /translate/batch).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
      */
-    public function compute(array|object|null $body = null, array $options = []): mixed
+    public function batch(array|object|null $body = null, array $options = []): mixed
     {
         $opts = [];
         if ($body !== null) {
@@ -63,31 +63,6 @@ final class AcgService
             $opts['idempotencyKey'] = $options['idempotencyKey'];
         }
 
-        return $this->client->request('POST', '/acg', $opts);
-    }
-
-    /**
-     * A*C*G Line Report (POST /acg/line-report).
-     *
-     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
-     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
-     */
-    public function lineReport(array|object|null $body = null, array $options = []): mixed
-    {
-        $opts = [];
-        if ($body !== null) {
-            $opts['json'] = $body;
-        }
-        if (!empty($options['query'])) {
-            $opts['query'] = $options['query'];
-        }
-        if (!empty($options['headers'])) {
-            $opts['headers'] = $options['headers'];
-        }
-        if (isset($options['idempotencyKey'])) {
-            $opts['idempotencyKey'] = $options['idempotencyKey'];
-        }
-
-        return $this->client->request('POST', '/acg/line-report', $opts);
+        return $this->client->request('POST', '/translate/batch', $opts);
     }
 }

@@ -9,20 +9,20 @@ namespace Astroway\Namespaces;
 
 use Astroway\Astroway;
 
-/** Service for djamaspa.* endpoints. */
-final class DjamaspaService
+/** Service for match_.* endpoints. */
+final class Match_Service
 {
     public function __construct(private readonly Astroway $client)
     {
     }
 
     /**
-     * Djamaspa (DEPRECATED — RED quality, sunset 2027-06-15) (POST /djamaspa).
+     * Match Score (dating compatibility) (POST /match/score).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
      */
-    public function compute(array|object|null $body = null, array $options = []): mixed
+    public function score(array|object|null $body = null, array $options = []): mixed
     {
         $opts = [];
         if ($body !== null) {
@@ -38,6 +38,6 @@ final class DjamaspaService
             $opts['idempotencyKey'] = $options['idempotencyKey'];
         }
 
-        return $this->client->request('POST', '/djamaspa', $opts);
+        return $this->client->request('POST', '/match/score', $opts);
     }
 }

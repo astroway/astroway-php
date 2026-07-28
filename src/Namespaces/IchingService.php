@@ -42,7 +42,7 @@ final class IchingService
     }
 
     /**
-     * I Ching Hexagram (POST /iching).
+     * I Ching Hexagram (DEPRECATED — use /iching/throw-coins) (POST /iching).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options

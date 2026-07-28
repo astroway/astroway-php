@@ -16,8 +16,8 @@ use Astroway\Namespaces\AntisciaService;
 use Astroway\Namespaces\ArabicPartsService;
 use Astroway\Namespaces\AshtakavargaService;
 use Astroway\Namespaces\AspectBarService;
-use Astroway\Namespaces\AspectsService;
 use Astroway\Namespaces\AspectTimelineService;
+use Astroway\Namespaces\AspectsService;
 use Astroway\Namespaces\BaziService;
 use Astroway\Namespaces\BusinessService;
 use Astroway\Namespaces\CcgAnalysisService;
@@ -64,10 +64,11 @@ use Astroway\Namespaces\KeysService;
 use Astroway\Namespaces\LocalSpaceService;
 use Astroway\Namespaces\LunarCalendarService;
 use Astroway\Namespaces\LunarReturnService;
+use Astroway\Namespaces\Match_Service;
 use Astroway\Namespaces\MayanService;
 use Astroway\Namespaces\McpService;
-use Astroway\Namespaces\MidpointsService;
 use Astroway\Namespaces\MidpointTreesService;
+use Astroway\Namespaces\MidpointsService;
 use Astroway\Namespaces\MinorProgressionsService;
 use Astroway\Namespaces\ModernService;
 use Astroway\Namespaces\MoonAspectsService;
@@ -106,8 +107,9 @@ use Astroway\Namespaces\TarotService;
 use Astroway\Namespaces\TertiaryProgressionsService;
 use Astroway\Namespaces\TransitCalendarService;
 use Astroway\Namespaces\TransitsService;
-use Astroway\Namespaces\VedicDivisionalService;
+use Astroway\Namespaces\TranslateService;
 use Astroway\Namespaces\VedicService;
+use Astroway\Namespaces\VedicDivisionalService;
 use Astroway\Namespaces\WebhooksService;
 use Astroway\Namespaces\WellnessService;
 use Astroway\Namespaces\WhitelabelService;
@@ -408,6 +410,11 @@ trait HasServices
         return $this->services['lunarReturn'] ??= new LunarReturnService($this);
     }
 
+    public function match_(): Match_Service
+    {
+        return $this->services['match_'] ??= new Match_Service($this);
+    }
+
     public function mayan(): MayanService
     {
         return $this->services['mayan'] ??= new MayanService($this);
@@ -616,6 +623,11 @@ trait HasServices
     public function transits(): TransitsService
     {
         return $this->services['transits'] ??= new TransitsService($this);
+    }
+
+    public function translate(): TranslateService
+    {
+        return $this->services['translate'] ??= new TranslateService($this);
     }
 
     public function vedic(): VedicService
