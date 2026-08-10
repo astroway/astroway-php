@@ -55,9 +55,15 @@ $chart = $aw->chart()->compute([
     'houseSystem' => 'P',
 ]);
 
-$asc = $chart['angles']['asc'];
-printf("ASC: %s %.2f°\n", $asc['sign'], $asc['degree']);
+$signs = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
+          'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
+
+$asc = $chart['houses']['ascendant'];                                    // 212.0929
+printf("ASC: %s %.2f°\n", $signs[(int) ($asc / 30)], fmod($asc, 30));    // ASC: Scorpio 2.09°
+printf("Sun: %.2f°\n", $chart['planets'][0]['longitude']);               // Sun: 111.77°
 ```
+
+`/chart` returns positions, not labels: `$chart['houses']['ascendant']` and every `$chart['planets'][$i]['longitude']` are ecliptic longitudes in degrees, so the sign is `(int) ($longitude / 30)` into the list above and the degree within it is `fmod($longitude, 30)`.
 
 The SDK exposes **103 typed service namespaces / 623 methods** auto-generated from the OpenAPI spec — `$aw->synastry()->aspectGrid([...])`, `$aw->bazi()->dayMaster([...])`, `$aw->vedic()->dashasVimshottariMaha([...])`, etc. The `{ ok, data, error }` envelope is unwrapped for you. Service objects are memoized per Astroway instance.
 
@@ -174,6 +180,10 @@ Full hierarchy under `Astroway\Errors`:
   - `InternalServerError` (5xx)
 
 > `errorCode` (not `code`) is the AstroWay-specific error code property. The base `\Exception::$code` would conflict.
+
+### The 400 you are most likely to hit first
+
+Chart bodies take `latitude`, `longitude` and `timezoneOffset`. The short spellings `lat`, `lon`, `lng`, `long`, `tz` and `timezone` are refused with a `BadRequestError` whose `$e->errorCode` is `INVALID_FIELD`, and `$e->body['error']['details']` names every offending field at once as `['path', 'expected', 'message']`. They are not accepted and not deprecated: they were never in the spec, and before the API started refusing them they were silently ignored, which charted 0°N 0°E at UTC under a `200`. Details: <https://api.astroway.info/en/errors/#invalid_field>.
 
 ---
 
