@@ -60,7 +60,6 @@ use Astroway\Namespaces\HylegService;
 use Astroway\Namespaces\IchingService;
 use Astroway\Namespaces\IngressesService;
 use Astroway\Namespaces\InterpretService;
-use Astroway\Namespaces\KeysService;
 use Astroway\Namespaces\LocalSpaceService;
 use Astroway\Namespaces\LunarCalendarService;
 use Astroway\Namespaces\LunarReturnService;
@@ -74,6 +73,7 @@ use Astroway\Namespaces\ModernService;
 use Astroway\Namespaces\MoonAspectsService;
 use Astroway\Namespaces\MoonPhaseService;
 use Astroway\Namespaces\MoonVocService;
+use Astroway\Namespaces\MuhurtaService;
 use Astroway\Namespaces\NakshatrasService;
 use Astroway\Namespaces\NumerologyService;
 use Astroway\Namespaces\PalmistryService;
@@ -91,6 +91,7 @@ use Astroway\Namespaces\ProfectionsService;
 use Astroway\Namespaces\ProgressionsService;
 use Astroway\Namespaces\ReceptionsService;
 use Astroway\Namespaces\RectificationService;
+use Astroway\Namespaces\ReferenceService;
 use Astroway\Namespaces\RelocationService;
 use Astroway\Namespaces\RenderService;
 use Astroway\Namespaces\ReportsService;
@@ -115,6 +116,7 @@ use Astroway\Namespaces\WellnessService;
 use Astroway\Namespaces\WhitelabelService;
 use Astroway\Namespaces\ZenithService;
 use Astroway\Namespaces\ZiweiService;
+use Astroway\Namespaces\ZodiacService;
 
 /**
  * Lazy accessors for typed service namespaces. Each accessor returns a memoized
@@ -390,11 +392,6 @@ trait HasServices
         return $this->services['interpret'] ??= new InterpretService($this);
     }
 
-    public function keys(): KeysService
-    {
-        return $this->services['keys'] ??= new KeysService($this);
-    }
-
     public function localSpace(): LocalSpaceService
     {
         return $this->services['localSpace'] ??= new LocalSpaceService($this);
@@ -458,6 +455,11 @@ trait HasServices
     public function moonVoc(): MoonVocService
     {
         return $this->services['moonVoc'] ??= new MoonVocService($this);
+    }
+
+    public function muhurta(): MuhurtaService
+    {
+        return $this->services['muhurta'] ??= new MuhurtaService($this);
     }
 
     public function nakshatras(): NakshatrasService
@@ -543,6 +545,11 @@ trait HasServices
     public function rectification(): RectificationService
     {
         return $this->services['rectification'] ??= new RectificationService($this);
+    }
+
+    public function reference(): ReferenceService
+    {
+        return $this->services['reference'] ??= new ReferenceService($this);
     }
 
     public function relocation(): RelocationService
@@ -663,6 +670,11 @@ trait HasServices
     public function ziwei(): ZiweiService
     {
         return $this->services['ziwei'] ??= new ZiweiService($this);
+    }
+
+    public function zodiac(): ZodiacService
+    {
+        return $this->services['zodiac'] ??= new ZodiacService($this);
     }
 
 }

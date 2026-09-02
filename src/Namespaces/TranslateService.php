@@ -65,4 +65,22 @@ final class TranslateService
 
         return $this->client->request('POST', '/translate/batch', $opts);
     }
+
+    /**
+     * Supported languages (GET /translate/languages).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function languagesGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/translate/languages', $opts);
+    }
 }

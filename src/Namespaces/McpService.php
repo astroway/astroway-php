@@ -42,6 +42,24 @@ final class McpService
     }
 
     /**
+     * MCP Agent Pool Status (GET /mcp/agent-pool-status).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function agentPoolStatusGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/mcp/agent-pool-status', $opts);
+    }
+
+    /**
      * MCP Multi-Agent Coordinate (POST /mcp/multi-agent-coordinate).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
@@ -164,5 +182,23 @@ final class McpService
         }
 
         return $this->client->request('POST', '/mcp/tool-call-stream', $opts);
+    }
+
+    /**
+     * MCP Tools List (GET /mcp/tools-list).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function toolsListGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/mcp/tools-list', $opts);
     }
 }

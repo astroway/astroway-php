@@ -42,6 +42,24 @@ final class AcgService
     }
 
     /**
+     * A*C*G Life Categories (GET /acg/categories).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function categoriesGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/acg/categories', $opts);
+    }
+
+    /**
      * Astrocartography (A*C*G) (POST /acg).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.

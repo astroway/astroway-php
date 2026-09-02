@@ -17,6 +17,24 @@ final class WhitelabelService
     }
 
     /**
+     * Get White-label Config (GET /whitelabel/config).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function configGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/whitelabel/config', $opts);
+    }
+
+    /**
      * Verify Custom Domain DNS (POST /whitelabel/domain/verify).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.

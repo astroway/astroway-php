@@ -67,6 +67,24 @@ final class WebhooksService
     }
 
     /**
+     * List Webhook Subscriptions (GET /webhooks).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function get(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/webhooks', $opts);
+    }
+
+    /**
      * Register Mahadasha-End Webhook (POST /webhooks/mahadasha-end).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.

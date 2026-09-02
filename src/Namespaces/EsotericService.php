@@ -42,6 +42,60 @@ final class EsotericService
     }
 
     /**
+     * Angel Numbers — Catalogue (GET /esoteric/angel-numbers).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function angelNumbersGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/esoteric/angel-numbers', $opts);
+    }
+
+    /**
+     * Daily Angel Number (GET /esoteric/angel-numbers/today).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function angelNumbersTodayGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/esoteric/angel-numbers/today', $opts);
+    }
+
+    /**
+     * Crystals — Full Directory (GET /esoteric/crystals).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function crystalsGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/esoteric/crystals', $opts);
+    }
+
+    /**
      * Crystal Recommendations (POST /esoteric/crystals/recommend).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
@@ -89,5 +143,41 @@ final class EsotericService
         }
 
         return $this->client->request('POST', '/esoteric/dreams/decode', $opts);
+    }
+
+    /**
+     * Dream Symbol Dictionary (GET /esoteric/dreams).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function dreamsGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/esoteric/dreams', $opts);
+    }
+
+    /**
+     * Recurring Dream Themes (GET /esoteric/dreams/recurring-themes).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function dreamsRecurringThemesGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/esoteric/dreams/recurring-themes', $opts);
     }
 }

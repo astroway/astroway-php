@@ -242,6 +242,24 @@ final class ReportsService
     }
 
     /**
+     * List Recent Report Exports (GET /reports/history).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function historyGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/reports/history', $opts);
+    }
+
+    /**
      * Generate Human Design Report (PDF or HTML) (POST /reports/human-design).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.

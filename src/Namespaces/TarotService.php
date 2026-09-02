@@ -17,6 +17,24 @@ final class TarotService
     }
 
     /**
+     * Lenormand — All Cards (GET /tarot/lenormand/cards).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function lenormandCardsGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/tarot/lenormand/cards', $opts);
+    }
+
+    /**
      * Lenormand — Daily Cards (POST /tarot/lenormand/daily).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
@@ -192,6 +210,24 @@ final class TarotService
     }
 
     /**
+     * Lenormand — 36 Houses (GET /tarot/lenormand/houses).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function lenormandHousesGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/tarot/lenormand/houses', $opts);
+    }
+
+    /**
      * Marseille — Birth Card (POST /tarot/marseille/birth-card).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
@@ -214,6 +250,24 @@ final class TarotService
         }
 
         return $this->client->request('POST', '/tarot/marseille/birth-card', $opts);
+    }
+
+    /**
+     * Marseille — All Cards (GET /tarot/marseille/cards).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function marseilleCardsGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/tarot/marseille/cards', $opts);
     }
 
     /**
@@ -542,6 +596,42 @@ final class TarotService
     }
 
     /**
+     * Marseille — 22 Majors (GET /tarot/marseille/majors).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function marseilleMajorsGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/tarot/marseille/majors', $opts);
+    }
+
+    /**
+     * Marseille — All Spreads (GET /tarot/marseille/spreads).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function marseilleSpreadsGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/tarot/marseille/spreads', $opts);
+    }
+
+    /**
      * Marseille — Timing (POST /tarot/marseille/timing).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
@@ -642,6 +732,24 @@ final class TarotService
     }
 
     /**
+     * RWS — All Cards (GET /tarot/rider-waite/cards).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function riderWaiteCardsGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/tarot/rider-waite/cards', $opts);
+    }
+
+    /**
      * RWS — Clarifier Card (POST /tarot/rider-waite/clarify).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
@@ -664,6 +772,24 @@ final class TarotService
         }
 
         return $this->client->request('POST', '/tarot/rider-waite/clarify', $opts);
+    }
+
+    /**
+     * RWS — 16 Court Cards (GET /tarot/rider-waite/courts).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function riderWaiteCourtsGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/tarot/rider-waite/courts', $opts);
     }
 
     /**
@@ -1042,6 +1168,42 @@ final class TarotService
     }
 
     /**
+     * RWS — 22 Majors (GET /tarot/rider-waite/majors).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function riderWaiteMajorsGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/tarot/rider-waite/majors', $opts);
+    }
+
+    /**
+     * RWS — 40 Minors (GET /tarot/rider-waite/minors).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function riderWaiteMinorsGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/tarot/rider-waite/minors', $opts);
+    }
+
+    /**
      * RWS — Missing Info Card (POST /tarot/rider-waite/missing-info).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
@@ -1139,6 +1301,24 @@ final class TarotService
         }
 
         return $this->client->request('POST', '/tarot/rider-waite/soul-personality-card', $opts);
+    }
+
+    /**
+     * RWS — All Spreads (GET /tarot/rider-waite/spreads).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function riderWaiteSpreadsGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/tarot/rider-waite/spreads', $opts);
     }
 
     /**
