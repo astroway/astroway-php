@@ -17,7 +17,7 @@ final class VedicDivisionalService
     }
 
     /**
-     * Vedic Divisional Chart (DEPRECATED — use /vedic/varga/{D}<*>) (POST /vedic-divisional).
+     * Vedic Divisional Chart (DEPRECATED: use /vedic/varga/{D}<*>) (POST /vedic-divisional).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options

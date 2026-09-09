@@ -17,6 +17,31 @@ final class ZiweiService
     }
 
     /**
+     * Four Transformations (四化) (POST /ziwei/four-transformations).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function fourTransformations(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/ziwei/four-transformations', $opts);
+    }
+
+    /**
      * Full Chart (MVP) (POST /ziwei/full-chart).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
@@ -142,7 +167,7 @@ final class ZiweiService
     }
 
     /**
-     * Health Palace (Jie\'e) (POST /ziwei/palace-health).
+     * Health Palace (Ji'e) (POST /ziwei/palace-health).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options

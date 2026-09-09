@@ -17,7 +17,7 @@ final class DjamaspaService
     }
 
     /**
-     * Djamaspa (DEPRECATED — RED quality, sunset 2027-06-15) (POST /djamaspa).
+     * Djamaspa (DEPRECATED: RED quality, sunset 2027-06-15) (POST /djamaspa).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options

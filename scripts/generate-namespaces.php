@@ -110,14 +110,11 @@ foreach (($spec['paths'] ?? []) as $path => $methods) {
         continue;
     }
     // Only endpoints answering with the JSON envelope get a typed method. The
-    // /embed/* widgets serve HTML; api-calc declares text/html for them since
-    // 2026-08-04. The explicit /embed/ skip is belt and braces until
-    // openapi.json is resynced past that date.
+    // /embed/* widgets serve HTML; api-calc declares text/html for all 14 of
+    // them, so this filter needs no per-path list. The explicit skip that stood
+    // here went out with the 2.152.1 resync.
     $okContent = $op['responses']['200']['content'] ?? [];
     if (!isset($okContent['application/json'])) {
-        continue;
-    }
-    if (str_starts_with((string) $path, '/embed/')) {
         continue;
     }
     // /public/* mirrors keyed endpoints the SDK already exposes.

@@ -17,7 +17,7 @@ final class ModernService
     }
 
     /**
-     * Arroyo — Cycle of Becoming (POST /modern/arroyo/cycle-of-becoming).
+     * Arroyo: Cycle of Becoming (POST /modern/arroyo/cycle-of-becoming).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -42,7 +42,7 @@ final class ModernService
     }
 
     /**
-     * Arroyo — Element Balance (POST /modern/arroyo/element-balance).
+     * Arroyo: Element Balance (POST /modern/arroyo/element-balance).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -67,7 +67,7 @@ final class ModernService
     }
 
     /**
-     * Arroyo — Element Integration (POST /modern/arroyo/element-integration).
+     * Arroyo: Element Integration (POST /modern/arroyo/element-integration).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -92,7 +92,7 @@ final class ModernService
     }
 
     /**
-     * Arroyo — Relational Map (POST /modern/arroyo/relational-element-map).
+     * Arroyo: Relational Map (POST /modern/arroyo/relational-element-map).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -117,7 +117,7 @@ final class ModernService
     }
 
     /**
-     * Arroyo — Water Houses Trauma (POST /modern/arroyo/water-houses-trauma).
+     * Arroyo: Water Houses Trauma (POST /modern/arroyo/water-houses-trauma).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -142,7 +142,7 @@ final class ModernService
     }
 
     /**
-     * Greene — Archetypal Figures (POST /modern/greene/archetypal-figures).
+     * Greene: Archetypal Figures (POST /modern/greene/archetypal-figures).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -167,7 +167,7 @@ final class ModernService
     }
 
     /**
-     * Greene — Individuation Path (POST /modern/greene/individuation-path).
+     * Greene: Individuation Path (POST /modern/greene/individuation-path).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -192,7 +192,7 @@ final class ModernService
     }
 
     /**
-     * Greene — Lunar Myth (POST /modern/greene/lunar-myth).
+     * Greene: Lunar Myth (POST /modern/greene/lunar-myth).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -217,7 +217,7 @@ final class ModernService
     }
 
     /**
-     * Greene — Parental Imagos (POST /modern/greene/parental-imagos).
+     * Greene: Parental Imagos (POST /modern/greene/parental-imagos).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -242,7 +242,7 @@ final class ModernService
     }
 
     /**
-     * Greene — Saturn Shadow (POST /modern/greene/saturn-shadow).
+     * Greene: Saturn Shadow (POST /modern/greene/saturn-shadow).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -267,7 +267,7 @@ final class ModernService
     }
 
     /**
-     * Rudhyar — Cycles of Becoming (POST /modern/rudhyar/cycles-of-becoming).
+     * Rudhyar: Cycles of Becoming (POST /modern/rudhyar/cycles-of-becoming).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -292,7 +292,7 @@ final class ModernService
     }
 
     /**
-     * Rudhyar — Lunation Phase (POST /modern/rudhyar/lunation-phase).
+     * Rudhyar: Lunation Phase (POST /modern/rudhyar/lunation-phase).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -317,7 +317,7 @@ final class ModernService
     }
 
     /**
-     * Rudhyar — Personality Keynote (POST /modern/rudhyar/personality-keynote).
+     * Rudhyar: Personality Keynote (POST /modern/rudhyar/personality-keynote).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -342,7 +342,7 @@ final class ModernService
     }
 
     /**
-     * Rudhyar — Symbolic Degrees (POST /modern/rudhyar/symbolic-degrees).
+     * Rudhyar: Symbolic Degrees (POST /modern/rudhyar/symbolic-degrees).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -367,7 +367,7 @@ final class ModernService
     }
 
     /**
-     * Rudhyar — Transits as Rebirth (POST /modern/rudhyar/transits-as-rebirth).
+     * Rudhyar: Transits as Rebirth (POST /modern/rudhyar/transits-as-rebirth).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options

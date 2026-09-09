@@ -42,7 +42,7 @@ final class EsotericService
     }
 
     /**
-     * Angel Numbers — Catalogue (GET /esoteric/angel-numbers).
+     * Angel Numbers: Catalogue (GET /esoteric/angel-numbers).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -78,7 +78,7 @@ final class EsotericService
     }
 
     /**
-     * Crystals — Full Directory (GET /esoteric/crystals).
+     * Crystals: Full Directory (GET /esoteric/crystals).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */

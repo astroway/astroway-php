@@ -122,9 +122,26 @@ final class DtoTest extends TestCase
         self::assertEqualsWithDelta(1, $body['ayanamsaId'], 0.0001);
     }
 
+    public function testBirthDataRefusesAChartWithNoPlace(): void
+    {
+        // The coordinates defaulted to 0, which is a real place in the Gulf of
+        // Guinea, so the request looked deliberate to the server and came back
+        // with a chart for it. api-calc stopped defaulting them in 2.141.0.
+        $this->expectException(\InvalidArgumentException::class);
+        new BirthData(date: '1990-07-14', time: '14:30:00');
+    }
+
+    public function testBirthDataRefusesATimezoneInMinutes(): void
+    {
+        // Bounded to -14..14 hours in api-calc 2.143.0. 330 used to be accepted
+        // and answered with a chart for a moment nobody asked about.
+        $this->expectException(\InvalidArgumentException::class);
+        new BirthData(date: '1990-07-14', time: '14:30:00', timezoneOffset: 330, latitude: 50.45, longitude: 30.52);
+    }
+
     public function testReadonlyDtoCannotBeMutated(): void
     {
-        $b = new BirthData(date: '1990-07-14', time: '14:30:00');
+        $b = new BirthData(date: '1990-07-14', time: '14:30:00', latitude: 50.45, longitude: 30.52);
         $this->expectException(\Error::class);
         // @phpstan-ignore-next-line — intentional readonly violation
         $b->date = '2000-01-01';

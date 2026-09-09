@@ -17,7 +17,7 @@ final class TarotService
     }
 
     /**
-     * Lenormand — All Cards (GET /tarot/lenormand/cards).
+     * Lenormand: All Cards (GET /tarot/lenormand/cards).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -35,7 +35,7 @@ final class TarotService
     }
 
     /**
-     * Lenormand — Daily Cards (POST /tarot/lenormand/daily).
+     * Lenormand: Daily Cards (POST /tarot/lenormand/daily).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -60,7 +60,7 @@ final class TarotService
     }
 
     /**
-     * Lenormand — 9-Card Square (POST /tarot/lenormand/draw/9-card-square).
+     * Lenormand: 9-Card Square (POST /tarot/lenormand/draw/9-card-square).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -85,7 +85,7 @@ final class TarotService
     }
 
     /**
-     * Lenormand — Celtic Cross (POST /tarot/lenormand/draw/celtic-cross-lenormand).
+     * Lenormand: Celtic Cross (POST /tarot/lenormand/draw/celtic-cross-lenormand).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -110,7 +110,7 @@ final class TarotService
     }
 
     /**
-     * Lenormand — Grand Tableau (POST /tarot/lenormand/draw/grand-tableau).
+     * Lenormand: Grand Tableau (POST /tarot/lenormand/draw/grand-tableau).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -135,7 +135,7 @@ final class TarotService
     }
 
     /**
-     * Lenormand — Line of Five (POST /tarot/lenormand/draw/line-of-five).
+     * Lenormand: Line of Five (POST /tarot/lenormand/draw/line-of-five).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -160,7 +160,7 @@ final class TarotService
     }
 
     /**
-     * Lenormand — Relationship (POST /tarot/lenormand/draw/relationship).
+     * Lenormand: Relationship (POST /tarot/lenormand/draw/relationship).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -185,7 +185,7 @@ final class TarotService
     }
 
     /**
-     * Lenormand — Three-Card (POST /tarot/lenormand/draw/three-card).
+     * Lenormand: Three-Card (POST /tarot/lenormand/draw/three-card).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -210,7 +210,7 @@ final class TarotService
     }
 
     /**
-     * Lenormand — 36 Houses (GET /tarot/lenormand/houses).
+     * Lenormand: 36 Houses (GET /tarot/lenormand/houses).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -228,7 +228,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Birth Card (POST /tarot/marseille/birth-card).
+     * Marseille: Birth Card (POST /tarot/marseille/birth-card).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -253,7 +253,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — All Cards (GET /tarot/marseille/cards).
+     * Marseille: All Cards (GET /tarot/marseille/cards).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -271,7 +271,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Clarifier (POST /tarot/marseille/clarify).
+     * Marseille: Clarifier (POST /tarot/marseille/clarify).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -296,7 +296,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Daily Card (POST /tarot/marseille/daily).
+     * Marseille: Daily Card (POST /tarot/marseille/daily).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -321,7 +321,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Career (POST /tarot/marseille/draw/career).
+     * Marseille: Career (POST /tarot/marseille/draw/career).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -346,7 +346,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Celtic Cross (POST /tarot/marseille/draw/celtic-cross).
+     * Marseille: Celtic Cross (POST /tarot/marseille/draw/celtic-cross).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -371,7 +371,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Tirage Réduit (Jodorowsky Reduced Cross) (POST /tarot/marseille/draw/cross).
+     * Marseille: Tirage Réduit (Jodorowsky Reduced Cross) (POST /tarot/marseille/draw/cross).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -396,7 +396,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Yes/No (POST /tarot/marseille/draw/decision).
+     * Marseille: Yes/No (POST /tarot/marseille/draw/decision).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -421,7 +421,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Tirage du Héros (Hero's Journey) (POST /tarot/marseille/draw/hero).
+     * Marseille: Tirage du Héros (Hero's Journey) (POST /tarot/marseille/draw/hero).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -446,7 +446,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Love (POST /tarot/marseille/draw/love).
+     * Marseille: Love (POST /tarot/marseille/draw/love).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -471,7 +471,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Seven-Card (POST /tarot/marseille/draw/seven-card).
+     * Marseille: Seven-Card (POST /tarot/marseille/draw/seven-card).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -496,7 +496,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Single Card (POST /tarot/marseille/draw/single).
+     * Marseille: Single Card (POST /tarot/marseille/draw/single).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -521,7 +521,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Spiritual (POST /tarot/marseille/draw/spiritual).
+     * Marseille: Spiritual (POST /tarot/marseille/draw/spiritual).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -546,7 +546,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Three-Card (POST /tarot/marseille/draw/three-card).
+     * Marseille: Three-Card (POST /tarot/marseille/draw/three-card).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -571,7 +571,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Interpret (POST /tarot/marseille/interpret).
+     * Marseille: Interpret (POST /tarot/marseille/interpret).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -596,7 +596,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — 22 Majors (GET /tarot/marseille/majors).
+     * Marseille: 22 Majors (GET /tarot/marseille/majors).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -614,7 +614,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — All Spreads (GET /tarot/marseille/spreads).
+     * Marseille: All Spreads (GET /tarot/marseille/spreads).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -632,7 +632,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Timing (POST /tarot/marseille/timing).
+     * Marseille: Timing (POST /tarot/marseille/timing).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -657,7 +657,7 @@ final class TarotService
     }
 
     /**
-     * Marseille — Year Card (POST /tarot/marseille/year-card).
+     * Marseille: Year Card (POST /tarot/marseille/year-card).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -682,7 +682,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Advice Card (POST /tarot/rider-waite/advice).
+     * RWS: Advice Card (POST /tarot/rider-waite/advice).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -707,7 +707,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Birth Card (POST /tarot/rider-waite/birth-card).
+     * RWS: Birth Card (POST /tarot/rider-waite/birth-card).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -732,7 +732,7 @@ final class TarotService
     }
 
     /**
-     * RWS — All Cards (GET /tarot/rider-waite/cards).
+     * RWS: All Cards (GET /tarot/rider-waite/cards).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -750,7 +750,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Clarifier Card (POST /tarot/rider-waite/clarify).
+     * RWS: Clarifier Card (POST /tarot/rider-waite/clarify).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -775,7 +775,7 @@ final class TarotService
     }
 
     /**
-     * RWS — 16 Court Cards (GET /tarot/rider-waite/courts).
+     * RWS: 16 Court Cards (GET /tarot/rider-waite/courts).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -793,7 +793,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Court Card Cross-Sum (POST /tarot/rider-waite/cross-sum).
+     * RWS: Court Card Cross-Sum (POST /tarot/rider-waite/cross-sum).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -818,7 +818,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Daily Card (POST /tarot/rider-waite/daily).
+     * RWS: Daily Card (POST /tarot/rider-waite/daily).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -843,7 +843,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Career (POST /tarot/rider-waite/draw/career).
+     * RWS: Career (POST /tarot/rider-waite/draw/career).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -868,7 +868,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Celtic Cross (POST /tarot/rider-waite/draw/celtic-cross).
+     * RWS: Celtic Cross (POST /tarot/rider-waite/draw/celtic-cross).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -893,7 +893,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Chakra (POST /tarot/rider-waite/draw/chakra).
+     * RWS: Chakra (POST /tarot/rider-waite/draw/chakra).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -918,7 +918,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Yes/No (POST /tarot/rider-waite/draw/decision).
+     * RWS: Yes/No (POST /tarot/rider-waite/draw/decision).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -943,7 +943,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Horseshoe (POST /tarot/rider-waite/draw/horseshoe).
+     * RWS: Horseshoe (POST /tarot/rider-waite/draw/horseshoe).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -968,7 +968,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Love Triangle (POST /tarot/rider-waite/draw/love-triangle).
+     * RWS: Love Triangle (POST /tarot/rider-waite/draw/love-triangle).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -993,7 +993,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Relationship (POST /tarot/rider-waite/draw/relationship).
+     * RWS: Relationship (POST /tarot/rider-waite/draw/relationship).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1018,7 +1018,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Shadow Work (POST /tarot/rider-waite/draw/shadow-work).
+     * RWS: Shadow Work (POST /tarot/rider-waite/draw/shadow-work).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1043,7 +1043,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Single Card Draw (POST /tarot/rider-waite/draw/single).
+     * RWS: Single Card Draw (POST /tarot/rider-waite/draw/single).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1068,7 +1068,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Spiritual Path (POST /tarot/rider-waite/draw/spiritual-path).
+     * RWS: Spiritual Path (POST /tarot/rider-waite/draw/spiritual-path).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1093,7 +1093,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Three-Card Draw (POST /tarot/rider-waite/draw/three-card).
+     * RWS: Three-Card Draw (POST /tarot/rider-waite/draw/three-card).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1118,7 +1118,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Year Ahead (POST /tarot/rider-waite/draw/year-ahead).
+     * RWS: Year Ahead (POST /tarot/rider-waite/draw/year-ahead).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1143,7 +1143,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Interpret a Hand (POST /tarot/rider-waite/interpret).
+     * RWS: Interpret a Hand (POST /tarot/rider-waite/interpret).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1168,7 +1168,7 @@ final class TarotService
     }
 
     /**
-     * RWS — 22 Majors (GET /tarot/rider-waite/majors).
+     * RWS: 22 Majors (GET /tarot/rider-waite/majors).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -1186,7 +1186,7 @@ final class TarotService
     }
 
     /**
-     * RWS — 40 Minors (GET /tarot/rider-waite/minors).
+     * RWS: 40 Minors (GET /tarot/rider-waite/minors).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -1204,7 +1204,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Missing Info Card (POST /tarot/rider-waite/missing-info).
+     * RWS: Missing Info Card (POST /tarot/rider-waite/missing-info).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1229,7 +1229,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Outcome Card (POST /tarot/rider-waite/outcome).
+     * RWS: Outcome Card (POST /tarot/rider-waite/outcome).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1254,7 +1254,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Shadow Card (POST /tarot/rider-waite/shadow-card).
+     * RWS: Shadow Card (POST /tarot/rider-waite/shadow-card).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1279,7 +1279,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Soul + Personality (POST /tarot/rider-waite/soul-personality-card).
+     * RWS: Soul + Personality (POST /tarot/rider-waite/soul-personality-card).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1304,7 +1304,7 @@ final class TarotService
     }
 
     /**
-     * RWS — All Spreads (GET /tarot/rider-waite/spreads).
+     * RWS: All Spreads (GET /tarot/rider-waite/spreads).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -1322,7 +1322,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Timing Card (POST /tarot/rider-waite/timing).
+     * RWS: Timing Card (POST /tarot/rider-waite/timing).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1347,7 +1347,7 @@ final class TarotService
     }
 
     /**
-     * RWS — Year Card (POST /tarot/rider-waite/year-card).
+     * RWS: Year Card (POST /tarot/rider-waite/year-card).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options

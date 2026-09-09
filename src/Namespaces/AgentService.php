@@ -9,19 +9,19 @@ namespace Astroway\Namespaces;
 
 use Astroway\Astroway;
 
-/** Service for muhurta.* endpoints. */
-final class MuhurtaService
+/** Service for agent.* endpoints. */
+final class AgentService
 {
     public function __construct(private readonly Astroway $client)
     {
     }
 
     /**
-     * Muhurat: activity catalogue (GET /muhurta/types).
+     * Agent tool definitions (GET /agent/tools).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
-    public function typesGet(array $options = []): mixed
+    public function toolsGet(array $options = []): mixed
     {
         $opts = [];
         if (!empty($options['query'])) {
@@ -31,6 +31,6 @@ final class MuhurtaService
             $opts['headers'] = $options['headers'];
         }
 
-        return $this->client->request('GET', '/muhurta/types', $opts);
+        return $this->client->request('GET', '/agent/tools', $opts);
     }
 }

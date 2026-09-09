@@ -117,7 +117,7 @@ final class RenderService
     }
 
     /**
-     * Cosmogram — Hamburg School 90° dial (SVG) (POST /render/cosmogram).
+     * Cosmogram: Hamburg School 90° dial (SVG) (POST /render/cosmogram).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -267,7 +267,7 @@ final class RenderService
     }
 
     /**
-     * Vedic Wheel — East Indian (SVG) (POST /render/wheel-vedic-east).
+     * Vedic Wheel: East Indian (SVG) (POST /render/wheel-vedic-east).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -292,7 +292,7 @@ final class RenderService
     }
 
     /**
-     * Vedic Wheel — North Indian (SVG) (POST /render/wheel-vedic-north).
+     * Vedic Wheel: North Indian (SVG) (POST /render/wheel-vedic-north).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -317,7 +317,7 @@ final class RenderService
     }
 
     /**
-     * Vedic Wheel — South Indian (SVG) (POST /render/wheel-vedic-south).
+     * Vedic Wheel: South Indian (SVG) (POST /render/wheel-vedic-south).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options

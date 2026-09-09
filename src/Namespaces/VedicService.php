@@ -17,7 +17,32 @@ final class VedicService
     }
 
     /**
-     * Compatibility — Ashtakoot Guna Milan (8-fold 36-point) (POST /vedic/compatibility/ashtakoot).
+     * Bhava Bala: house strength (POST /vedic/bhavabala).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function bhavabala(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/vedic/bhavabala', $opts);
+    }
+
+    /**
+     * Compatibility: Ashtakoot Guna Milan (8-fold 36-point) (POST /vedic/compatibility/ashtakoot).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -42,7 +67,7 @@ final class VedicService
     }
 
     /**
-     * Compatibility — Bhrigu-match (7H placement) (POST /vedic/compatibility/bhrigu-match).
+     * Compatibility: Bhrigu-match (7H placement) (POST /vedic/compatibility/bhrigu-match).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -67,7 +92,7 @@ final class VedicService
     }
 
     /**
-     * Compatibility — Dashakoota (10-fold 39-point) (POST /vedic/compatibility/dashakoota).
+     * Compatibility: Dashakoota (10-fold 39-point) (POST /vedic/compatibility/dashakoota).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -92,7 +117,7 @@ final class VedicService
     }
 
     /**
-     * Compatibility — Parashara full report (POST /vedic/compatibility/full).
+     * Compatibility: Parashara full report (POST /vedic/compatibility/full).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -117,7 +142,7 @@ final class VedicService
     }
 
     /**
-     * Compatibility — Mangal-match (Manglik between partners) (POST /vedic/compatibility/mangal-match).
+     * Compatibility: Mangal-match (Manglik between partners) (POST /vedic/compatibility/mangal-match).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -142,7 +167,7 @@ final class VedicService
     }
 
     /**
-     * Compatibility — Manglik check (single chart) (POST /vedic/compatibility/manglik-check).
+     * Compatibility: Manglik check (single chart) (POST /vedic/compatibility/manglik-check).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -167,7 +192,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Ashtottari Antardasha (POST /vedic/dashas/ashtottari/antar).
+     * Dashas: Ashtottari Antardasha (POST /vedic/dashas/ashtottari/antar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -192,7 +217,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Ashtottari Mahadasha (POST /vedic/dashas/ashtottari/maha).
+     * Dashas: Ashtottari Mahadasha (POST /vedic/dashas/ashtottari/maha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -217,7 +242,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Ashtottari Pranadasha (POST /vedic/dashas/ashtottari/prana).
+     * Dashas: Ashtottari Pranadasha (POST /vedic/dashas/ashtottari/prana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -242,7 +267,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Ashtottari Pratyantardasha (POST /vedic/dashas/ashtottari/pratyantar).
+     * Dashas: Ashtottari Pratyantardasha (POST /vedic/dashas/ashtottari/pratyantar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -267,7 +292,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Ashtottari Sookshmadasha (POST /vedic/dashas/ashtottari/sookshma).
+     * Dashas: Ashtottari Sookshmadasha (POST /vedic/dashas/ashtottari/sookshma).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -292,7 +317,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Chara Antardasha (POST /vedic/dashas/chara/antar).
+     * Dashas: Chara Antardasha (POST /vedic/dashas/chara/antar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -317,7 +342,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Chara Mahadasha (POST /vedic/dashas/chara/maha).
+     * Dashas: Chara Mahadasha (POST /vedic/dashas/chara/maha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -342,7 +367,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Chara Pranadasha (POST /vedic/dashas/chara/prana).
+     * Dashas: Chara Pranadasha (POST /vedic/dashas/chara/prana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -367,7 +392,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Chara Pratyantardasha (POST /vedic/dashas/chara/pratyantar).
+     * Dashas: Chara Pratyantardasha (POST /vedic/dashas/chara/pratyantar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -392,7 +417,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Chara Sookshmadasha (POST /vedic/dashas/chara/sookshma).
+     * Dashas: Chara Sookshmadasha (POST /vedic/dashas/chara/sookshma).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -417,7 +442,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Kalachakra Antardasha (POST /vedic/dashas/kalachakra/antar).
+     * Dashas: Kalachakra Antardasha (POST /vedic/dashas/kalachakra/antar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -442,7 +467,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Kalachakra Mahadasha (POST /vedic/dashas/kalachakra/maha).
+     * Dashas: Kalachakra Mahadasha (POST /vedic/dashas/kalachakra/maha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -467,7 +492,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Kalachakra Pranadasha (POST /vedic/dashas/kalachakra/prana).
+     * Dashas: Kalachakra Pranadasha (POST /vedic/dashas/kalachakra/prana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -492,7 +517,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Kalachakra Pratyantardasha (POST /vedic/dashas/kalachakra/pratyantar).
+     * Dashas: Kalachakra Pratyantardasha (POST /vedic/dashas/kalachakra/pratyantar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -517,7 +542,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Kalachakra Sookshmadasha (POST /vedic/dashas/kalachakra/sookshma).
+     * Dashas: Kalachakra Sookshmadasha (POST /vedic/dashas/kalachakra/sookshma).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -542,7 +567,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shatabdika Antardasha (POST /vedic/dashas/shatabdika/antar).
+     * Dashas: Shatabdika Antardasha (POST /vedic/dashas/shatabdika/antar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -567,7 +592,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shatabdika Mahadasha (POST /vedic/dashas/shatabdika/maha).
+     * Dashas: Shatabdika Mahadasha (POST /vedic/dashas/shatabdika/maha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -592,7 +617,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shatabdika Pranadasha (POST /vedic/dashas/shatabdika/prana).
+     * Dashas: Shatabdika Pranadasha (POST /vedic/dashas/shatabdika/prana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -617,7 +642,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shatabdika Pratyantardasha (POST /vedic/dashas/shatabdika/pratyantar).
+     * Dashas: Shatabdika Pratyantardasha (POST /vedic/dashas/shatabdika/pratyantar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -642,7 +667,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shatabdika Sookshmadasha (POST /vedic/dashas/shatabdika/sookshma).
+     * Dashas: Shatabdika Sookshmadasha (POST /vedic/dashas/shatabdika/sookshma).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -667,7 +692,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shodashottari Antardasha (POST /vedic/dashas/shodashottari/antar).
+     * Dashas: Shodashottari Antardasha (POST /vedic/dashas/shodashottari/antar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -692,7 +717,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shodashottari Mahadasha (POST /vedic/dashas/shodashottari/maha).
+     * Dashas: Shodashottari Mahadasha (POST /vedic/dashas/shodashottari/maha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -717,7 +742,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shodashottari Pranadasha (POST /vedic/dashas/shodashottari/prana).
+     * Dashas: Shodashottari Pranadasha (POST /vedic/dashas/shodashottari/prana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -742,7 +767,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shodashottari Pratyantardasha (POST /vedic/dashas/shodashottari/pratyantar).
+     * Dashas: Shodashottari Pratyantardasha (POST /vedic/dashas/shodashottari/pratyantar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -767,7 +792,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shodashottari Sookshmadasha (POST /vedic/dashas/shodashottari/sookshma).
+     * Dashas: Shodashottari Sookshmadasha (POST /vedic/dashas/shodashottari/sookshma).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -792,7 +817,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shoola Antardasha (POST /vedic/dashas/shoola/antar).
+     * Dashas: Shoola Antardasha (POST /vedic/dashas/shoola/antar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -817,7 +842,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shoola Mahadasha (POST /vedic/dashas/shoola/maha).
+     * Dashas: Shoola Mahadasha (POST /vedic/dashas/shoola/maha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -842,7 +867,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shoola Pranadasha (POST /vedic/dashas/shoola/prana).
+     * Dashas: Shoola Pranadasha (POST /vedic/dashas/shoola/prana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -867,7 +892,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shoola Pratyantardasha (POST /vedic/dashas/shoola/pratyantar).
+     * Dashas: Shoola Pratyantardasha (POST /vedic/dashas/shoola/pratyantar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -892,7 +917,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Shoola Sookshmadasha (POST /vedic/dashas/shoola/sookshma).
+     * Dashas: Shoola Sookshmadasha (POST /vedic/dashas/shoola/sookshma).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -917,7 +942,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Sthira Antardasha (POST /vedic/dashas/sthira/antar).
+     * Dashas: Sthira Antardasha (POST /vedic/dashas/sthira/antar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -942,7 +967,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Sthira Mahadasha (POST /vedic/dashas/sthira/maha).
+     * Dashas: Sthira Mahadasha (POST /vedic/dashas/sthira/maha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -967,7 +992,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Sthira Pranadasha (POST /vedic/dashas/sthira/prana).
+     * Dashas: Sthira Pranadasha (POST /vedic/dashas/sthira/prana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -992,7 +1017,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Sthira Pratyantardasha (POST /vedic/dashas/sthira/pratyantar).
+     * Dashas: Sthira Pratyantardasha (POST /vedic/dashas/sthira/pratyantar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1017,7 +1042,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Sthira Sookshmadasha (POST /vedic/dashas/sthira/sookshma).
+     * Dashas: Sthira Sookshmadasha (POST /vedic/dashas/sthira/sookshma).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1042,7 +1067,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Tribhagi Antardasha (POST /vedic/dashas/tribhagi/antar).
+     * Dashas: Tribhagi Antardasha (POST /vedic/dashas/tribhagi/antar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1067,7 +1092,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Tribhagi Mahadasha (POST /vedic/dashas/tribhagi/maha).
+     * Dashas: Tribhagi Mahadasha (POST /vedic/dashas/tribhagi/maha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1092,7 +1117,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Tribhagi Pranadasha (POST /vedic/dashas/tribhagi/prana).
+     * Dashas: Tribhagi Pranadasha (POST /vedic/dashas/tribhagi/prana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1117,7 +1142,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Tribhagi Pratyantardasha (POST /vedic/dashas/tribhagi/pratyantar).
+     * Dashas: Tribhagi Pratyantardasha (POST /vedic/dashas/tribhagi/pratyantar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1142,7 +1167,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Tribhagi Sookshmadasha (POST /vedic/dashas/tribhagi/sookshma).
+     * Dashas: Tribhagi Sookshmadasha (POST /vedic/dashas/tribhagi/sookshma).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1167,7 +1192,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Vimshottari Antardasha (POST /vedic/dashas/vimshottari/antar).
+     * Dashas: Vimshottari Antardasha (POST /vedic/dashas/vimshottari/antar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1192,7 +1217,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Vimshottari Mahadasha (POST /vedic/dashas/vimshottari/maha).
+     * Dashas: Vimshottari Mahadasha (POST /vedic/dashas/vimshottari/maha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1217,7 +1242,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Vimshottari Pranadasha (POST /vedic/dashas/vimshottari/prana).
+     * Dashas: Vimshottari Pranadasha (POST /vedic/dashas/vimshottari/prana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1242,7 +1267,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Vimshottari Pratyantardasha (POST /vedic/dashas/vimshottari/pratyantar).
+     * Dashas: Vimshottari Pratyantardasha (POST /vedic/dashas/vimshottari/pratyantar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1267,7 +1292,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Vimshottari Sookshmadasha (POST /vedic/dashas/vimshottari/sookshma).
+     * Dashas: Vimshottari Sookshmadasha (POST /vedic/dashas/vimshottari/sookshma).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1292,7 +1317,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Yogini Antardasha (POST /vedic/dashas/yogini/antar).
+     * Dashas: Yogini Antardasha (POST /vedic/dashas/yogini/antar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1317,7 +1342,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Yogini Mahadasha (POST /vedic/dashas/yogini/maha).
+     * Dashas: Yogini Mahadasha (POST /vedic/dashas/yogini/maha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1342,7 +1367,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Yogini Pranadasha (POST /vedic/dashas/yogini/prana).
+     * Dashas: Yogini Pranadasha (POST /vedic/dashas/yogini/prana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1367,7 +1392,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Yogini Pratyantardasha (POST /vedic/dashas/yogini/pratyantar).
+     * Dashas: Yogini Pratyantardasha (POST /vedic/dashas/yogini/pratyantar).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1392,7 +1417,7 @@ final class VedicService
     }
 
     /**
-     * Dashas — Yogini Sookshmadasha (POST /vedic/dashas/yogini/sookshma).
+     * Dashas: Yogini Sookshmadasha (POST /vedic/dashas/yogini/sookshma).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1417,7 +1442,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — KP full summary (POST /vedic/doshas/kp/full).
+     * Doshas: KP full summary (POST /vedic/doshas/kp/full).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1442,7 +1467,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — KP Kalasarpa (POST /vedic/doshas/kp/kalasarpa).
+     * Doshas: KP Kalasarpa (POST /vedic/doshas/kp/kalasarpa).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1467,7 +1492,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — KP Kemadruma (POST /vedic/doshas/kp/kemadruma).
+     * Doshas: KP Kemadruma (POST /vedic/doshas/kp/kemadruma).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1492,7 +1517,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — KP Manglik (POST /vedic/doshas/kp/manglik).
+     * Doshas: KP Manglik (POST /vedic/doshas/kp/manglik).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1517,7 +1542,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — KP Pitra (POST /vedic/doshas/kp/pitra).
+     * Doshas: KP Pitra (POST /vedic/doshas/kp/pitra).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1542,7 +1567,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — KP Sade Sati (POST /vedic/doshas/kp/sade-sati).
+     * Doshas: KP Sade Sati (POST /vedic/doshas/kp/sade-sati).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1567,7 +1592,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Lal Kitab full summary (POST /vedic/doshas/lal-kitab/full).
+     * Doshas: Lal Kitab full summary (POST /vedic/doshas/lal-kitab/full).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1592,7 +1617,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Lal Kitab Kalsarpa (POST /vedic/doshas/lal-kitab/kalsarpa).
+     * Doshas: Lal Kitab Kalsarpa (POST /vedic/doshas/lal-kitab/kalsarpa).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1617,7 +1642,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Lal Kitab Manglik (POST /vedic/doshas/lal-kitab/manglik).
+     * Doshas: Lal Kitab Manglik (POST /vedic/doshas/lal-kitab/manglik).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1642,7 +1667,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Lal Kitab Pitra (POST /vedic/doshas/lal-kitab/pitra).
+     * Doshas: Lal Kitab Pitra (POST /vedic/doshas/lal-kitab/pitra).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1667,7 +1692,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Lal Kitab Rin (6 ancestral debts) (POST /vedic/doshas/lal-kitab/rin).
+     * Doshas: Lal Kitab Rin (6 ancestral debts) (POST /vedic/doshas/lal-kitab/rin).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1692,7 +1717,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Lal Kitab Shrapit (POST /vedic/doshas/lal-kitab/shrapit).
+     * Doshas: Lal Kitab Shrapit (POST /vedic/doshas/lal-kitab/shrapit).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1717,7 +1742,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Parashara full report (POST /vedic/doshas/parashara/full).
+     * Doshas: Parashara full report (POST /vedic/doshas/parashara/full).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1742,7 +1767,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Grahan (eclipse-like) (POST /vedic/doshas/parashara/grahan).
+     * Doshas: Grahan (eclipse-like) (POST /vedic/doshas/parashara/grahan).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1767,7 +1792,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Guru-Chandal (POST /vedic/doshas/parashara/guru-chandal).
+     * Doshas: Guru-Chandal (POST /vedic/doshas/parashara/guru-chandal).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1792,7 +1817,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Kaal Sarp (POST /vedic/doshas/parashara/kaal-sarp).
+     * Doshas: Kaal Sarp (POST /vedic/doshas/parashara/kaal-sarp).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1817,7 +1842,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Mangal (Mars affliction) (POST /vedic/doshas/parashara/mangal).
+     * Doshas: Mangal (Mars affliction) (POST /vedic/doshas/parashara/mangal).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1842,7 +1867,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Pitru (ancestral) (POST /vedic/doshas/parashara/pitru).
+     * Doshas: Pitru (ancestral) (POST /vedic/doshas/parashara/pitru).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1867,7 +1892,7 @@ final class VedicService
     }
 
     /**
-     * Doshas — Shrapit (curse) (POST /vedic/doshas/parashara/shrapit).
+     * Doshas: Shrapit (curse) (POST /vedic/doshas/parashara/shrapit).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1892,7 +1917,50 @@ final class VedicService
     }
 
     /**
-     * Jaimini — Argala / Virodhargala scan (POST /vedic/jaimini/argala-analysis).
+     * Gemstone (ratna) recommendation (POST /vedic/gemstones).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function gemstones(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/vedic/gemstones', $opts);
+    }
+
+    /**
+     * Navaratna reference table (GET /vedic/gemstones/navaratna).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function gemstonesNavaratnaGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/vedic/gemstones/navaratna', $opts);
+    }
+
+    /**
+     * Jaimini: Argala / Virodhargala scan (POST /vedic/jaimini/argala-analysis).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1917,7 +1985,7 @@ final class VedicService
     }
 
     /**
-     * Jaimini — Aspects (Rasi + Graha drishti) (POST /vedic/jaimini/aspects).
+     * Jaimini: Aspects (Rasi + Graha drishti) (POST /vedic/jaimini/aspects).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1942,7 +2010,7 @@ final class VedicService
     }
 
     /**
-     * Jaimini — Karakamsa (AK in Navamsa) (POST /vedic/jaimini/atmakaraka-navamsa).
+     * Jaimini: Karakamsa (AK in Navamsa) (POST /vedic/jaimini/atmakaraka-navamsa).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1967,7 +2035,7 @@ final class VedicService
     }
 
     /**
-     * Jaimini — Atmakaraka rotation (timeline) (POST /vedic/jaimini/atmakaraka-rotation).
+     * Jaimini: Atmakaraka rotation (timeline) (POST /vedic/jaimini/atmakaraka-rotation).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -1992,7 +2060,7 @@ final class VedicService
     }
 
     /**
-     * Jaimini — Chara Karakas (detailed) (POST /vedic/jaimini/chara-karakas).
+     * Jaimini: Chara Karakas (detailed) (POST /vedic/jaimini/chara-karakas).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2017,7 +2085,7 @@ final class VedicService
     }
 
     /**
-     * Jaimini — Running Dasha Summary (POST /vedic/jaimini/dasha-summary).
+     * Jaimini: Running Dasha Summary (POST /vedic/jaimini/dasha-summary).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2042,7 +2110,7 @@ final class VedicService
     }
 
     /**
-     * Jaimini — Graha Drishti (planet aspects) (POST /vedic/jaimini/drishti-graha).
+     * Jaimini: Graha Drishti (planet aspects) (POST /vedic/jaimini/drishti-graha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2067,7 +2135,7 @@ final class VedicService
     }
 
     /**
-     * Jaimini — Rasi Drishti (sign aspects) (POST /vedic/jaimini/drishti-rasi).
+     * Jaimini: Rasi Drishti (sign aspects) (POST /vedic/jaimini/drishti-rasi).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2092,7 +2160,7 @@ final class VedicService
     }
 
     /**
-     * Jaimini — Karakas (Chara + Naisargika) (POST /vedic/jaimini/karakas).
+     * Jaimini: Karakas (Chara + Naisargika) (POST /vedic/jaimini/karakas).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2117,7 +2185,7 @@ final class VedicService
     }
 
     /**
-     * Jaimini — Padas (Bhava/Surya/Chandra/Graha Arudhas) (POST /vedic/jaimini/padas).
+     * Jaimini: Padas (Bhava/Surya/Chandra/Graha Arudhas) (POST /vedic/jaimini/padas).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2142,7 +2210,7 @@ final class VedicService
     }
 
     /**
-     * Jaimini — Upapada Lagna (UL) (POST /vedic/jaimini/upapada).
+     * Jaimini: Upapada Lagna (UL) (POST /vedic/jaimini/upapada).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2167,7 +2235,7 @@ final class VedicService
     }
 
     /**
-     * Jaimini — Yogas (basic AK/DK/PK set) (POST /vedic/jaimini/yogas).
+     * Jaimini: Yogas (basic AK/DK/PK set) (POST /vedic/jaimini/yogas).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2192,7 +2260,7 @@ final class VedicService
     }
 
     /**
-     * KP — Ascendant sub-lord (POST /vedic/kp/asc-sub).
+     * KP: Ascendant sub-lord (POST /vedic/kp/asc-sub).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2217,7 +2285,7 @@ final class VedicService
     }
 
     /**
-     * KP — Placidus cusps with sub-lord chain (POST /vedic/kp/cusps).
+     * KP: Placidus cusps with sub-lord chain (POST /vedic/kp/cusps).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2242,7 +2310,7 @@ final class VedicService
     }
 
     /**
-     * KP — Part of Fortune (POST /vedic/kp/fortuna).
+     * KP: Part of Fortune (POST /vedic/kp/fortuna).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2267,7 +2335,7 @@ final class VedicService
     }
 
     /**
-     * KP — Horary chart (1..249) (POST /vedic/kp/horary).
+     * KP: Horary chart (1..249) (POST /vedic/kp/horary).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2292,7 +2360,7 @@ final class VedicService
     }
 
     /**
-     * KP — Planet cuspal positions (POST /vedic/kp/planet-cuspal-position).
+     * KP: Planet cuspal positions (POST /vedic/kp/planet-cuspal-position).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2317,7 +2385,7 @@ final class VedicService
     }
 
     /**
-     * KP — Ruling Planets (POST /vedic/kp/ruling-planets).
+     * KP: Ruling Planets (POST /vedic/kp/ruling-planets).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2342,7 +2410,7 @@ final class VedicService
     }
 
     /**
-     * KP — Significators (primary/secondary/tertiary) (POST /vedic/kp/significators).
+     * KP: Significators (primary/secondary/tertiary) (POST /vedic/kp/significators).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2367,7 +2435,7 @@ final class VedicService
     }
 
     /**
-     * KP — Sub-lords (cusps + planets) (POST /vedic/kp/sub-lords).
+     * KP: Sub-lords (cusps + planets) (POST /vedic/kp/sub-lords).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2392,7 +2460,7 @@ final class VedicService
     }
 
     /**
-     * KP — Sub-sub-lord lookup (POST /vedic/kp/sub-sub-lord).
+     * KP: Sub-sub-lord lookup (POST /vedic/kp/sub-sub-lord).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2417,7 +2485,7 @@ final class VedicService
     }
 
     /**
-     * KP — Transit positions (POST /vedic/kp/transit-kp).
+     * KP: Transit positions (POST /vedic/kp/transit-kp).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2442,7 +2510,7 @@ final class VedicService
     }
 
     /**
-     * Lal Kitab — Blind houses (Andha bhava) (POST /vedic/lal-kitab/blind-house).
+     * Lal Kitab: Blind houses (Andha bhava) (POST /vedic/lal-kitab/blind-house).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2467,7 +2535,7 @@ final class VedicService
     }
 
     /**
-     * Lal Kitab — Dasha (35-year cycle) (POST /vedic/lal-kitab/dasha).
+     * Lal Kitab: Dasha (35-year cycle) (POST /vedic/lal-kitab/dasha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2492,7 +2560,7 @@ final class VedicService
     }
 
     /**
-     * Lal Kitab — Rin (6 ancestral debts) (POST /vedic/lal-kitab/debts).
+     * Lal Kitab: Rin (6 ancestral debts) (POST /vedic/lal-kitab/debts).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2517,7 +2585,7 @@ final class VedicService
     }
 
     /**
-     * Lal Kitab — Kismat (fortune indicator) (POST /vedic/lal-kitab/kismat).
+     * Lal Kitab: Kismat (fortune indicator) (POST /vedic/lal-kitab/kismat).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2542,7 +2610,7 @@ final class VedicService
     }
 
     /**
-     * Lal Kitab — Kundali (12-house grid) (POST /vedic/lal-kitab/lal-kundali).
+     * Lal Kitab: Kundali (12-house grid) (POST /vedic/lal-kitab/lal-kundali).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2567,7 +2635,7 @@ final class VedicService
     }
 
     /**
-     * Lal Kitab — Life graph (age-by-age) (POST /vedic/lal-kitab/life-graph).
+     * Lal Kitab: Life graph (age-by-age) (POST /vedic/lal-kitab/life-graph).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2592,7 +2660,7 @@ final class VedicService
     }
 
     /**
-     * Lal Kitab — Planet-in-house effect (POST /vedic/lal-kitab/planet-house-effect).
+     * Lal Kitab: Planet-in-house effect (POST /vedic/lal-kitab/planet-house-effect).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2617,7 +2685,7 @@ final class VedicService
     }
 
     /**
-     * Lal Kitab — Sukh (prosperity yoga) (POST /vedic/lal-kitab/prosperity).
+     * Lal Kitab: Sukh (prosperity yoga) (POST /vedic/lal-kitab/prosperity).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2642,7 +2710,7 @@ final class VedicService
     }
 
     /**
-     * Lal Kitab — Remedies (Upayas) (POST /vedic/lal-kitab/remedies).
+     * Lal Kitab: Remedies (Upayas) (POST /vedic/lal-kitab/remedies).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2667,7 +2735,7 @@ final class VedicService
     }
 
     /**
-     * Lal Kitab — Sleeping houses (POST /vedic/lal-kitab/sleeping-house).
+     * Lal Kitab: Sleeping houses (POST /vedic/lal-kitab/sleeping-house).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2692,7 +2760,7 @@ final class VedicService
     }
 
     /**
-     * Lal Kitab — Teva (fixed-house chart) (POST /vedic/lal-kitab/teva).
+     * Lal Kitab: Teva (fixed-house chart) (POST /vedic/lal-kitab/teva).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2717,7 +2785,7 @@ final class VedicService
     }
 
     /**
-     * Lal Kitab — Varshphal (annual) (POST /vedic/lal-kitab/varshphal).
+     * Lal Kitab: Varshphal (annual) (POST /vedic/lal-kitab/varshphal).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2742,7 +2810,7 @@ final class VedicService
     }
 
     /**
-     * Muhurat — Business start (Vyapara) (POST /vedic/muhurat/business-start).
+     * Muhurat: Business start (Vyapara) (POST /vedic/muhurat/business-start).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2767,7 +2835,7 @@ final class VedicService
     }
 
     /**
-     * Muhurat — Education start (Vidyarambha) (POST /vedic/muhurat/education-start).
+     * Muhurat: Education start (Vidyarambha) (POST /vedic/muhurat/education-start).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2792,7 +2860,7 @@ final class VedicService
     }
 
     /**
-     * Muhurat — General auspicious window (POST /vedic/muhurat/general-auspicious).
+     * Muhurat: General auspicious window (POST /vedic/muhurat/general-auspicious).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2817,7 +2885,7 @@ final class VedicService
     }
 
     /**
-     * Muhurat — Investment / Dhana Sthapana (POST /vedic/muhurat/investment).
+     * Muhurat: Investment / Dhana Sthapana (POST /vedic/muhurat/investment).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2842,7 +2910,7 @@ final class VedicService
     }
 
     /**
-     * Muhurat — Long journey (multi-day Yatra) (POST /vedic/muhurat/journey-long).
+     * Muhurat: Long journey (multi-day Yatra) (POST /vedic/muhurat/journey-long).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2867,7 +2935,7 @@ final class VedicService
     }
 
     /**
-     * Muhurat — Marriage (Vivah) (POST /vedic/muhurat/marriage).
+     * Muhurat: Marriage (Vivah) (POST /vedic/muhurat/marriage).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2892,7 +2960,7 @@ final class VedicService
     }
 
     /**
-     * Muhurat — Name change (POST /vedic/muhurat/name-change).
+     * Muhurat: Name change (POST /vedic/muhurat/name-change).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2917,7 +2985,7 @@ final class VedicService
     }
 
     /**
-     * Muhurat — Naming ceremony (Namkaran) (POST /vedic/muhurat/naming-ceremony).
+     * Muhurat: Naming ceremony (Namkaran) (POST /vedic/muhurat/naming-ceremony).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2942,7 +3010,7 @@ final class VedicService
     }
 
     /**
-     * Muhurat — Property purchase / Griha Pravesh (POST /vedic/muhurat/property-purchase).
+     * Muhurat: Property purchase / Griha Pravesh (POST /vedic/muhurat/property-purchase).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2967,7 +3035,7 @@ final class VedicService
     }
 
     /**
-     * Muhurat — Surgery (Shastrakarma) (POST /vedic/muhurat/surgery).
+     * Muhurat: Surgery (Shastrakarma) (POST /vedic/muhurat/surgery).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -2992,7 +3060,7 @@ final class VedicService
     }
 
     /**
-     * Muhurat — Travel (short Yatra) (POST /vedic/muhurat/travel).
+     * Muhurat: Travel (short Yatra) (POST /vedic/muhurat/travel).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3017,7 +3085,7 @@ final class VedicService
     }
 
     /**
-     * Muhurat — Vehicle purchase (POST /vedic/muhurat/vehicle-purchase).
+     * Muhurat: Vehicle purchase (POST /vedic/muhurat/vehicle-purchase).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3042,7 +3110,7 @@ final class VedicService
     }
 
     /**
-     * Panchang — Choghadia (POST /vedic/panchang/choghadia).
+     * Panchang: Choghadia (POST /vedic/panchang/choghadia).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3067,7 +3135,7 @@ final class VedicService
     }
 
     /**
-     * Panchang — full (POST /vedic/panchang/full).
+     * Panchang: full (POST /vedic/panchang/full).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3092,7 +3160,7 @@ final class VedicService
     }
 
     /**
-     * Panchang — Hora (POST /vedic/panchang/hora).
+     * Panchang: Hora (POST /vedic/panchang/hora).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3117,7 +3185,7 @@ final class VedicService
     }
 
     /**
-     * Panchang — Karana (POST /vedic/panchang/karana).
+     * Panchang: Karana (POST /vedic/panchang/karana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3142,7 +3210,7 @@ final class VedicService
     }
 
     /**
-     * Panchang — Nakshatra of Day (POST /vedic/panchang/nakshatra-of-day).
+     * Panchang: Nakshatra of Day (POST /vedic/panchang/nakshatra-of-day).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3167,7 +3235,7 @@ final class VedicService
     }
 
     /**
-     * Panchang — Rahu Kaal block (POST /vedic/panchang/rahu-kaal).
+     * Panchang: Rahu Kaal block (POST /vedic/panchang/rahu-kaal).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3192,7 +3260,7 @@ final class VedicService
     }
 
     /**
-     * Panchang — Tithi (POST /vedic/panchang/tithi).
+     * Panchang: Tithi (POST /vedic/panchang/tithi).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3217,7 +3285,7 @@ final class VedicService
     }
 
     /**
-     * Panchang — Yoga (POST /vedic/panchang/yoga).
+     * Panchang: Yoga (POST /vedic/panchang/yoga).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3242,7 +3310,7 @@ final class VedicService
     }
 
     /**
-     * Shadbala — Cheshta (motional) (POST /vedic/shadbala/cheshta).
+     * Shadbala: Cheshta (motional) (POST /vedic/shadbala/cheshta).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3267,7 +3335,7 @@ final class VedicService
     }
 
     /**
-     * Shadbala — Dig (directional) (POST /vedic/shadbala/dig).
+     * Shadbala: Dig (directional) (POST /vedic/shadbala/dig).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3292,7 +3360,7 @@ final class VedicService
     }
 
     /**
-     * Shadbala — Drik (aspectual) (POST /vedic/shadbala/drik).
+     * Shadbala: Drik (aspectual) (POST /vedic/shadbala/drik).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3317,7 +3385,7 @@ final class VedicService
     }
 
     /**
-     * Shadbala — full summary (POST /vedic/shadbala/full).
+     * Shadbala: full summary (POST /vedic/shadbala/full).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3342,7 +3410,7 @@ final class VedicService
     }
 
     /**
-     * Shadbala — Kala (temporal) (POST /vedic/shadbala/kala).
+     * Shadbala: Kala (temporal) (POST /vedic/shadbala/kala).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3367,7 +3435,7 @@ final class VedicService
     }
 
     /**
-     * Shadbala — Naisargika (natural) (POST /vedic/shadbala/naisargika).
+     * Shadbala: Naisargika (natural) (POST /vedic/shadbala/naisargika).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3392,7 +3460,7 @@ final class VedicService
     }
 
     /**
-     * Shadbala — Sthana (positional) (POST /vedic/shadbala/sthana).
+     * Shadbala: Sthana (positional) (POST /vedic/shadbala/sthana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3417,7 +3485,7 @@ final class VedicService
     }
 
     /**
-     * Varga D1 — Rashi (POST /vedic/varga/D1).
+     * Varga D1: Rashi (POST /vedic/varga/D1).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3442,7 +3510,7 @@ final class VedicService
     }
 
     /**
-     * Varga D10 — Dasamsa (POST /vedic/varga/D10).
+     * Varga D10: Dasamsa (POST /vedic/varga/D10).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3467,7 +3535,7 @@ final class VedicService
     }
 
     /**
-     * Varga D12 — Dwadasamsa (POST /vedic/varga/D12).
+     * Varga D12: Dwadasamsa (POST /vedic/varga/D12).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3492,7 +3560,7 @@ final class VedicService
     }
 
     /**
-     * Varga D16 — Shodasamsa (POST /vedic/varga/D16).
+     * Varga D16: Shodasamsa (POST /vedic/varga/D16).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3517,7 +3585,7 @@ final class VedicService
     }
 
     /**
-     * Varga D2 — Hora (POST /vedic/varga/D2).
+     * Varga D2: Hora (POST /vedic/varga/D2).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3542,7 +3610,7 @@ final class VedicService
     }
 
     /**
-     * Varga D20 — Vimsamsa (POST /vedic/varga/D20).
+     * Varga D20: Vimsamsa (POST /vedic/varga/D20).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3567,7 +3635,7 @@ final class VedicService
     }
 
     /**
-     * Varga D24 — Chaturvimsamsa (POST /vedic/varga/D24).
+     * Varga D24: Chaturvimsamsa (POST /vedic/varga/D24).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3592,7 +3660,7 @@ final class VedicService
     }
 
     /**
-     * Varga D27 — Saptavimsamsa (POST /vedic/varga/D27).
+     * Varga D27: Saptavimsamsa (POST /vedic/varga/D27).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3617,7 +3685,7 @@ final class VedicService
     }
 
     /**
-     * Varga D3 — Drekkana (POST /vedic/varga/D3).
+     * Varga D3: Drekkana (POST /vedic/varga/D3).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3642,7 +3710,7 @@ final class VedicService
     }
 
     /**
-     * Varga D30 — Trimsamsa (POST /vedic/varga/D30).
+     * Varga D30: Trimsamsa (POST /vedic/varga/D30).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3667,7 +3735,7 @@ final class VedicService
     }
 
     /**
-     * Varga D4 — Chaturthamsa (POST /vedic/varga/D4).
+     * Varga D4: Chaturthamsa (POST /vedic/varga/D4).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3692,7 +3760,7 @@ final class VedicService
     }
 
     /**
-     * Varga D40 — Khavedamsa (POST /vedic/varga/D40).
+     * Varga D40: Khavedamsa (POST /vedic/varga/D40).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3717,7 +3785,7 @@ final class VedicService
     }
 
     /**
-     * Varga D45 — Akshavedamsa (POST /vedic/varga/D45).
+     * Varga D45: Akshavedamsa (POST /vedic/varga/D45).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3742,7 +3810,7 @@ final class VedicService
     }
 
     /**
-     * Varga D60 — Shashtiamsa (POST /vedic/varga/D60).
+     * Varga D60: Shashtiamsa (POST /vedic/varga/D60).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3767,7 +3835,7 @@ final class VedicService
     }
 
     /**
-     * Varga D7 — Saptamsa (POST /vedic/varga/D7).
+     * Varga D7: Saptamsa (POST /vedic/varga/D7).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3792,7 +3860,7 @@ final class VedicService
     }
 
     /**
-     * Varga D9 — Navamsa (POST /vedic/varga/D9).
+     * Varga D9: Navamsa (POST /vedic/varga/D9).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3817,7 +3885,32 @@ final class VedicService
     }
 
     /**
-     * Yogas — Jaimini Daridra yoga (POST /vedic/yogas/jaimini/daridra).
+     * Varshaphal: Tajika annual chart (POST /vedic/varshaphal).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function varshaphal(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/vedic/varshaphal', $opts);
+    }
+
+    /**
+     * Yogas: Jaimini Daridra yoga (POST /vedic/yogas/jaimini/daridra).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3842,7 +3935,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Jaimini Dhana yoga (POST /vedic/yogas/jaimini/dhana).
+     * Yogas: Jaimini Dhana yoga (POST /vedic/yogas/jaimini/dhana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3867,7 +3960,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Jaimini full summary (POST /vedic/yogas/jaimini/full).
+     * Yogas: Jaimini full summary (POST /vedic/yogas/jaimini/full).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3892,7 +3985,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Jaimini Karaka yoga (all 8 karakas) (POST /vedic/yogas/jaimini/karaka-yoga).
+     * Yogas: Jaimini Karaka yoga (all 8 karakas) (POST /vedic/yogas/jaimini/karaka-yoga).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3917,7 +4010,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Karakamsa chart (12-house projection) (POST /vedic/yogas/jaimini/karakamsa).
+     * Yogas: Karakamsa chart (12-house projection) (POST /vedic/yogas/jaimini/karakamsa).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3942,7 +4035,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Jaimini Raja yoga (POST /vedic/yogas/jaimini/raja).
+     * Yogas: Jaimini Raja yoga (POST /vedic/yogas/jaimini/raja).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3967,7 +4060,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Shubha-graha (functional natures) (POST /vedic/yogas/jaimini/shubha-graha).
+     * Yogas: Shubha-graha (functional natures) (POST /vedic/yogas/jaimini/shubha-graha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -3992,7 +4085,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Jaimini Viparita Raja yoga (POST /vedic/yogas/jaimini/viparita).
+     * Yogas: Jaimini Viparita Raja yoga (POST /vedic/yogas/jaimini/viparita).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -4017,7 +4110,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Adhi (POST /vedic/yogas/parashara/adhi).
+     * Yogas: Adhi (POST /vedic/yogas/parashara/adhi).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -4042,7 +4135,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Dhana (wealth) (POST /vedic/yogas/parashara/dhana).
+     * Yogas: Dhana (wealth) (POST /vedic/yogas/parashara/dhana).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -4067,7 +4160,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Dharma-Karmadhipati (POST /vedic/yogas/parashara/dharma-karmadhipati).
+     * Yogas: Dharma-Karmadhipati (POST /vedic/yogas/parashara/dharma-karmadhipati).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -4092,7 +4185,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Parashara full report (POST /vedic/yogas/parashara/full).
+     * Yogas: Parashara full report (POST /vedic/yogas/parashara/full).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -4117,7 +4210,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Gajakesari (POST /vedic/yogas/parashara/gajakesari).
+     * Yogas: Gajakesari (POST /vedic/yogas/parashara/gajakesari).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -4142,7 +4235,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Pancha Mahapurusha (5 great) (POST /vedic/yogas/parashara/pancha-mahapurusha).
+     * Yogas: Pancha Mahapurusha (5 great) (POST /vedic/yogas/parashara/pancha-mahapurusha).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -4167,7 +4260,7 @@ final class VedicService
     }
 
     /**
-     * Yogas — Raja (royal) (POST /vedic/yogas/parashara/raja).
+     * Yogas: Raja (royal) (POST /vedic/yogas/parashara/raja).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options

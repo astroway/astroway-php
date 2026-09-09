@@ -17,6 +17,31 @@ final class ChineseService
     }
 
     /**
+     * Annual flying stars and afflictions (POST /chinese/feng-shui/annual-stars).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function fengShuiAnnualStars(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/chinese/feng-shui/annual-stars', $opts);
+    }
+
+    /**
      * Bagua Life Areas (POST /chinese/feng-shui/bagua).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
@@ -39,6 +64,31 @@ final class ChineseService
         }
 
         return $this->client->request('POST', '/chinese/feng-shui/bagua', $opts);
+    }
+
+    /**
+     * Flying Star natal chart (Xuan Kong Fei Xing) (POST /chinese/feng-shui/flying-star).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function fengShuiFlyingStar(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/chinese/feng-shui/flying-star', $opts);
     }
 
     /**
@@ -89,6 +139,106 @@ final class ChineseService
         }
 
         return $this->client->request('POST', '/chinese/feng-shui/lucky-directions', $opts);
+    }
+
+    /**
+     * Gregorian to Lunar Date (POST /chinese/lunar-date).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function lunarDate(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/chinese/lunar-date', $opts);
+    }
+
+    /**
+     * 24 Solar Terms (節氣) (POST /chinese/solar-terms).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function solarTerms(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/chinese/solar-terms', $opts);
+    }
+
+    /**
+     * Tong Shu day: officer and mansion (POST /chinese/tong-shu).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function tongShu(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/chinese/tong-shu', $opts);
+    }
+
+    /**
+     * Tong Shu date selection (POST /chinese/tong-shu/select).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function tongShuSelect(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/chinese/tong-shu/select', $opts);
     }
 
     /**

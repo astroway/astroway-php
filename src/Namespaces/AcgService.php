@@ -17,6 +17,31 @@ final class AcgService
     }
 
     /**
+     * Best places for a life category (POST /acg/best-places).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function bestPlaces(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/acg/best-places', $opts);
+    }
+
+    /**
      * A*C*G by Life Category (POST /acg/by-category).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
@@ -82,6 +107,24 @@ final class AcgService
         }
 
         return $this->client->request('POST', '/acg', $opts);
+    }
+
+    /**
+     * Countries available for ranking (GET /acg/countries).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function countriesGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/acg/countries', $opts);
     }
 
     /**

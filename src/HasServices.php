@@ -9,6 +9,7 @@ namespace Astroway;
 
 use Astroway\Namespaces\AcgService;
 use Astroway\Namespaces\AcgZonesService;
+use Astroway\Namespaces\AgentService;
 use Astroway\Namespaces\AiService;
 use Astroway\Namespaces\AlgolMinimumService;
 use Astroway\Namespaces\AlmutenService;
@@ -60,6 +61,7 @@ use Astroway\Namespaces\HylegService;
 use Astroway\Namespaces\IchingService;
 use Astroway\Namespaces\IngressesService;
 use Astroway\Namespaces\InterpretService;
+use Astroway\Namespaces\KabbalahService;
 use Astroway\Namespaces\LocalSpaceService;
 use Astroway\Namespaces\LunarCalendarService;
 use Astroway\Namespaces\LunarReturnService;
@@ -135,6 +137,11 @@ trait HasServices
     public function acgZones(): AcgZonesService
     {
         return $this->services['acgZones'] ??= new AcgZonesService($this);
+    }
+
+    public function agent(): AgentService
+    {
+        return $this->services['agent'] ??= new AgentService($this);
     }
 
     public function ai(): AiService
@@ -390,6 +397,11 @@ trait HasServices
     public function interpret(): InterpretService
     {
         return $this->services['interpret'] ??= new InterpretService($this);
+    }
+
+    public function kabbalah(): KabbalahService
+    {
+        return $this->services['kabbalah'] ??= new KabbalahService($this);
     }
 
     public function localSpace(): LocalSpaceService

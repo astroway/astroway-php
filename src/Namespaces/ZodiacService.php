@@ -17,7 +17,7 @@ final class ZodiacService
     }
 
     /**
-     * Aquarius — Fixed Air (GET /zodiac/aquarius).
+     * Aquarius: Fixed Air (GET /zodiac/aquarius).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -35,7 +35,7 @@ final class ZodiacService
     }
 
     /**
-     * Aries — Cardinal Fire (GET /zodiac/aries).
+     * Aries: Cardinal Fire (GET /zodiac/aries).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -53,7 +53,7 @@ final class ZodiacService
     }
 
     /**
-     * Cancer — Cardinal Water (GET /zodiac/cancer).
+     * Cancer: Cardinal Water (GET /zodiac/cancer).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -71,7 +71,7 @@ final class ZodiacService
     }
 
     /**
-     * Capricorn — Cardinal Earth (GET /zodiac/capricorn).
+     * Capricorn: Cardinal Earth (GET /zodiac/capricorn).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -89,7 +89,7 @@ final class ZodiacService
     }
 
     /**
-     * Gemini — Mutable Air (GET /zodiac/gemini).
+     * Gemini: Mutable Air (GET /zodiac/gemini).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -107,7 +107,7 @@ final class ZodiacService
     }
 
     /**
-     * Leo — Fixed Fire (GET /zodiac/leo).
+     * Leo: Fixed Fire (GET /zodiac/leo).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -125,7 +125,7 @@ final class ZodiacService
     }
 
     /**
-     * Libra — Cardinal Air (GET /zodiac/libra).
+     * Libra: Cardinal Air (GET /zodiac/libra).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -143,7 +143,7 @@ final class ZodiacService
     }
 
     /**
-     * Pisces — Mutable Water (GET /zodiac/pisces).
+     * Pisces: Mutable Water (GET /zodiac/pisces).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -161,7 +161,7 @@ final class ZodiacService
     }
 
     /**
-     * Sagittarius — Mutable Fire (GET /zodiac/sagittarius).
+     * Sagittarius: Mutable Fire (GET /zodiac/sagittarius).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -179,7 +179,7 @@ final class ZodiacService
     }
 
     /**
-     * Scorpio — Fixed Water (GET /zodiac/scorpio).
+     * Scorpio: Fixed Water (GET /zodiac/scorpio).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -197,7 +197,7 @@ final class ZodiacService
     }
 
     /**
-     * Taurus — Fixed Earth (GET /zodiac/taurus).
+     * Taurus: Fixed Earth (GET /zodiac/taurus).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
@@ -215,7 +215,7 @@ final class ZodiacService
     }
 
     /**
-     * Virgo — Mutable Earth (GET /zodiac/virgo).
+     * Virgo: Mutable Earth (GET /zodiac/virgo).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */

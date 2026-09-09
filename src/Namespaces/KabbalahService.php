@@ -9,20 +9,20 @@ namespace Astroway\Namespaces;
 
 use Astroway\Astroway;
 
-/** Service for parans.* endpoints. */
-final class ParansService
+/** Service for kabbalah.* endpoints. */
+final class KabbalahService
 {
     public function __construct(private readonly Astroway $client)
     {
     }
 
     /**
-     * Parans (POST /parans).
+     * Gematria ciphers (POST /kabbalah/gematria).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
      */
-    public function compute(array|object|null $body = null, array $options = []): mixed
+    public function gematria(array|object|null $body = null, array $options = []): mixed
     {
         $opts = [];
         if ($body !== null) {
@@ -38,31 +38,42 @@ final class ParansService
             $opts['idempotencyKey'] = $options['idempotencyKey'];
         }
 
-        return $this->client->request('POST', '/parans', $opts);
+        return $this->client->request('POST', '/kabbalah/gematria', $opts);
     }
 
     /**
-     * Star-planet parans (Brady) (POST /parans/star).
+     * The ten sephirot (GET /kabbalah/sephiroth).
      *
-     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
-     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
      */
-    public function star(array|object|null $body = null, array $options = []): mixed
+    public function sephirothGet(array $options = []): mixed
     {
         $opts = [];
-        if ($body !== null) {
-            $opts['json'] = $body;
-        }
         if (!empty($options['query'])) {
             $opts['query'] = $options['query'];
         }
         if (!empty($options['headers'])) {
             $opts['headers'] = $options['headers'];
         }
-        if (isset($options['idempotencyKey'])) {
-            $opts['idempotencyKey'] = $options['idempotencyKey'];
+
+        return $this->client->request('GET', '/kabbalah/sephiroth', $opts);
+    }
+
+    /**
+     * The seventy-two names (Shem HaMephorash) (GET /kabbalah/shem-names).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function shemNamesGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
         }
 
-        return $this->client->request('POST', '/parans/star', $opts);
+        return $this->client->request('GET', '/kabbalah/shem-names', $opts);
     }
 }

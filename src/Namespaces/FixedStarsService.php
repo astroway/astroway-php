@@ -17,6 +17,24 @@ final class FixedStarsService
     }
 
     /**
+     * Fixed star catalogue (GET /fixed-stars/catalog).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function catalogGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/fixed-stars/catalog', $opts);
+    }
+
+    /**
      * Fixed Stars (POST /fixed-stars).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.

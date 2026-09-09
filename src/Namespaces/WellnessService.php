@@ -17,6 +17,31 @@ final class WellnessService
     }
 
     /**
+     * Biorhythm (JSON) (POST /wellness/biorhythm).
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     */
+    public function biorhythm(array|object|null $body = null, array $options = []): mixed
+    {
+        $opts = [];
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+        if (isset($options['idempotencyKey'])) {
+            $opts['idempotencyKey'] = $options['idempotencyKey'];
+        }
+
+        return $this->client->request('POST', '/wellness/biorhythm', $opts);
+    }
+
+    /**
      * Healing Crystals by Sign (POST /wellness/crystals).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.

@@ -17,7 +17,7 @@ final class GeomancyService
     }
 
     /**
-     * Acquisitio — Gain (POST /geomancy/acquisitio).
+     * Acquisitio: Gain (POST /geomancy/acquisitio).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -42,7 +42,7 @@ final class GeomancyService
     }
 
     /**
-     * Albus — White (POST /geomancy/albus).
+     * Albus: White (POST /geomancy/albus).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -67,7 +67,7 @@ final class GeomancyService
     }
 
     /**
-     * Amissio — Loss (POST /geomancy/amissio).
+     * Amissio: Loss (POST /geomancy/amissio).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -117,7 +117,7 @@ final class GeomancyService
     }
 
     /**
-     * Carcer — Prison (POST /geomancy/carcer).
+     * Carcer: Prison (POST /geomancy/carcer).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -167,7 +167,7 @@ final class GeomancyService
     }
 
     /**
-     * Coniunctio — Conjunction (POST /geomancy/coniunctio).
+     * Coniunctio: Conjunction (POST /geomancy/coniunctio).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -242,7 +242,7 @@ final class GeomancyService
     }
 
     /**
-     * Laetitia — Joy (POST /geomancy/laetitia).
+     * Laetitia: Joy (POST /geomancy/laetitia).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -267,7 +267,7 @@ final class GeomancyService
     }
 
     /**
-     * Populus — The People (POST /geomancy/populus).
+     * Populus: The People (POST /geomancy/populus).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -292,7 +292,7 @@ final class GeomancyService
     }
 
     /**
-     * Puella — Girl (POST /geomancy/puella).
+     * Puella: Girl (POST /geomancy/puella).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -317,7 +317,7 @@ final class GeomancyService
     }
 
     /**
-     * Puer — Boy (POST /geomancy/puer).
+     * Puer: Boy (POST /geomancy/puer).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -342,7 +342,7 @@ final class GeomancyService
     }
 
     /**
-     * Rubeus — Red (POST /geomancy/rubeus).
+     * Rubeus: Red (POST /geomancy/rubeus).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -367,7 +367,7 @@ final class GeomancyService
     }
 
     /**
-     * Tristitia — Sorrow (POST /geomancy/tristitia).
+     * Tristitia: Sorrow (POST /geomancy/tristitia).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
@@ -392,7 +392,7 @@ final class GeomancyService
     }
 
     /**
-     * Via — The Way (POST /geomancy/via).
+     * Via: The Way (POST /geomancy/via).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options

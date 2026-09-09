@@ -17,7 +17,7 @@ final class DestinyMatrixService
     }
 
     /**
-     * Destiny Matrix — Ladini Method (POST /destiny-matrix/ladini).
+     * Destiny Matrix: Ladini Method (POST /destiny-matrix/ladini).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
