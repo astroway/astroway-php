@@ -1,12 +1,12 @@
 # astroway/sdk
 
-> Official PHP SDK for the [AstroWay API](https://api.astroway.info) — natal charts, synastry, transits, Vedic dashas, Tarot, Numerology, Human Design, AI horoscopes. Type-safe, retry-aware, PSR-18 compatible.
+> Official PHP SDK for the [AstroWay API](https://api.astroway.info): natal charts, synastry, transits, Vedic dashas, Tarot, Numerology, Human Design, AI horoscopes. Type-safe, retry-aware, PSR-18 compatible.
 
 [![Latest Version](https://img.shields.io/packagist/v/astroway/sdk.svg?style=flat&color=blue)](https://packagist.org/packages/astroway/sdk)
 [![PHP version](https://img.shields.io/packagist/php-v/astroway/sdk.svg)](https://packagist.org/packages/astroway/sdk)
 [![license: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-700+ endpoints. Pure **PSR-18 / PSR-17** — bring your own HTTP client (Guzzle, Symfony, Buzz, …) or let auto-discovery pick one. Built-in retry on 408/409/429/5xx with exponential backoff. Stainless-style error hierarchy (`AuthenticationError` / `RateLimitError` / `BadRequestError` / …). PHP 8.1+.
+700+ endpoints. Pure **PSR-18 / PSR-17**: bring your own HTTP client (Guzzle, Symfony, Buzz, …) or let auto-discovery pick one. Built-in retry on 408/409/429/5xx with exponential backoff. Stainless-style error hierarchy (`AuthenticationError` / `RateLimitError` / `BadRequestError` / …). PHP 8.1+.
 
 ---
 
@@ -33,7 +33,7 @@ $aw = new Astroway([
 ]);
 ```
 
-Get an API key at <https://api.astroway.info/dashboard/sign-up> — **10 000 credits/month free**, no card required. Each endpoint costs 5–500 credits depending on what it computes ([pricing](https://api.astroway.info/pricing/)).
+Get an API key at <https://api.astroway.info/dashboard/sign-up>: **10 000 credits/month free**, no card required. Each endpoint costs 5–500 credits depending on what it computes ([pricing](https://api.astroway.info/pricing/)).
 
 ---
 
@@ -65,7 +65,7 @@ printf("Sun: %.2f°\n", $chart['planets'][0]['longitude']);               // Sun
 
 `/chart` returns positions, not labels: `$chart['houses']['ascendant']` and every `$chart['planets'][$i]['longitude']` are ecliptic longitudes in degrees, so the sign is `(int) ($longitude / 30)` into the list above and the degree within it is `fmod($longitude, 30)`.
 
-The SDK exposes **103 typed service namespaces / 623 methods** auto-generated from the OpenAPI spec — `$aw->synastry()->aspectGrid([...])`, `$aw->bazi()->dayMaster([...])`, `$aw->vedic()->dashasVimshottariMaha([...])`, etc. The `{ ok, data, error }` envelope is unwrapped for you. Service objects are memoized per Astroway instance.
+The SDK exposes **103 typed service namespaces / 623 methods** auto-generated from the OpenAPI spec: `$aw->synastry()->aspectGrid([...])`, `$aw->bazi()->dayMaster([...])`, `$aw->vedic()->dashasVimshottariMaha([...])`, etc. The `{ ok, data, error }` envelope is unwrapped for you. Service objects are memoized per Astroway instance.
 
 Need a raw response or an endpoint not yet covered by services? `$aw->request('POST', $path, ['json' => $body])` and `$aw->post($path, body: …)` remain available as escape hatches.
 
@@ -113,7 +113,7 @@ $card = $aw->tarot()->riderWaiteDaily(['seed' => 42]);
 $hd = $aw->humanDesign()->compute([
     'date' => '1990-07-14', 'time' => '14:30:00', 'timezoneOffset' => 3, 'latitude' => 50.45, 'longitude' => 30.52,
 ]);
-echo "{$hd['type']} — {$hd['strategy']} — {$hd['authority']}\n";
+echo "{$hd['type']} - {$hd['strategy']} - {$hd['authority']}\n";
 ```
 
 ### White-label PDF report
@@ -144,7 +144,7 @@ account's stored config (requires a wpUserId-bound key).
 
 ## Error handling
 
-The SDK throws typed subclasses of `Astroway\Errors\ApiError`. Catch order matters — most specific first:
+The SDK throws typed subclasses of `Astroway\Errors\ApiError`. Catch order matters, most specific first:
 
 ```php
 use Astroway\Errors\ApiError;
@@ -176,7 +176,7 @@ Full hierarchy under `Astroway\Errors`:
   - `PermissionDeniedError` (403)
   - `NotFoundError` (404)
   - `UnprocessableEntityError` (422)
-  - `RateLimitError` (429) — carries `retryAfterSeconds`
+  - `RateLimitError` (429), carries `retryAfterSeconds`
   - `InternalServerError` (5xx)
 
 > `errorCode` (not `code`) is the AstroWay-specific error code property. The base `\Exception::$code` would conflict.
@@ -215,10 +215,10 @@ Set `retry: ['maxRetries' => 0]` to disable retries entirely.
 
 ## Authentication
 
-Two equivalent auth schemes — pick whichever your stack prefers:
+Two equivalent auth schemes, pick whichever your stack prefers:
 
-- **Header (default):** `X-Api-Key: aw_live_...` — same convention as `curl`/Postman examples.
-- **Bearer:** `Authorization: Bearer aw_live_...` — same convention as Stripe/OpenAI/Anthropic SDKs.
+- **Header (default):** `X-Api-Key: aw_live_...`, the same convention as `curl`/Postman examples.
+- **Bearer:** `Authorization: Bearer aw_live_...`, the same convention as Stripe/OpenAI/Anthropic SDKs.
 
 Set via `'authScheme' => 'bearer'` in the constructor options.
 
@@ -241,26 +241,26 @@ Neither carries a session ID, machine fingerprint, or anything personal.
 
 Since **`1.0.0` (2026-05-11)** this package follows strict SemVer:
 
-- **Public `Astroway` surface stable inside `1.x`** — constructor `$options` shape, `request/get/post/put/delete/concurrent` methods, 100+ namespace accessors (`chart()`, `synastry()`, ...), `ApiError` public properties (`status`/`errorCode`/`requestId`/`creditsRemaining`/`retryAfterSeconds`/`body`). Removing or renaming any of them requires `2.0.0` with deprecation period.
-- **Error subclass tree stable inside `1.x`** — 9 classified `*Error` subtypes are part of the contract.
+- **Public `Astroway` surface stable inside `1.x`**: constructor `$options` shape, `request/get/post/put/delete/concurrent` methods, 100+ namespace accessors (`chart()`, `synastry()`, ...), `ApiError` public properties (`status`/`errorCode`/`requestId`/`creditsRemaining`/`retryAfterSeconds`/`body`). Removing or renaming any of them requires `2.0.0` with deprecation period.
+- **Error subclass tree stable inside `1.x`**: 9 classified `*Error` subtypes are part of the contract.
 - **Body shape stable inside `1.minor`.** Tightening (constraints, enums) ships in patches; new required keys require a minor bump.
 - **API version vs SDK version are independent.** SDK `1.x` follows its own semver; the API itself sits at `/v1/`.
 - **PHP 8.2+ required** since `1.0.0`. Need 8.1? Stay on `0.x` (will receive critical security patches).
 
 ### Migration from `0.1.0-alpha.x` / `0.1.0-beta.x` / `0.1.0-rc.1` to `0.1.0`
 
-`0.1.0` freezes the public surface. **No breaking changes** vs `0.1.0-rc.1` — every export, namespace, error class, and option added across alphas / betas / RC ships unchanged. The freeze means future `0.1.x` patches will not narrow types, remove classes, or rename methods; that level of change requires a `0.2.0` minor bump.
+`0.1.0` freezes the public surface. **No breaking changes** vs `0.1.0-rc.1`: every export, namespace, error class, and option added across alphas / betas / RC ships unchanged. The freeze means future `0.1.x` patches will not narrow types, remove classes, or rename methods; that level of change requires a `0.2.0` minor bump.
 
 | Coming from | Action |
 |---|---|
-| `0.1.0-alpha.1` (hard Guzzle dependency) | Now PSR-18 — bring your own client (`'httpClient' => $client`) or rely on auto-discovery via `php-http/discovery`. |
+| `0.1.0-alpha.1` (hard Guzzle dependency) | Now PSR-18, so bring your own client (`'httpClient' => $client`) or rely on auto-discovery via `php-http/discovery`. |
 | `0.1.0-alpha.2` … `alpha.4` (no service classes / DTOs) | Switch to typed services (`$aw->chart()->compute($body)`, etc.) and DTO classes (`new NatalChartRequest(...)`). The escape hatch (`$aw->post('/chart', $body)`) still works. |
 | `0.1.0-alpha.5` … `alpha.6` (no error refinement / idempotency) | Catch `RateLimitException` / `QuotaExceededException` separately; `$exception->requestId` / `creditsRemaining` / `retryAfterSeconds` available. Auto `Idempotency-Key` on POSTs. |
 | `0.1.0-beta.1` … `beta.3` (no helpers / cache / concurrent) | `BirthDateTime::fromCity(...)` helpers; PSR-16 cache via `'cache' => $cache`; `$aw->concurrent(10)->all([...])` for parallel batches. |
-| `0.1.0-beta.4` (no mock client) | `use Astroway\Testing\MockAstroway;` for PHPUnit — drop-in for `Astroway`. |
+| `0.1.0-beta.4` (no mock client) | `use Astroway\Testing\MockAstroway;` for PHPUnit, a drop-in for `Astroway`. |
 | `0.1.0-rc.1` (no logger / metrics) | Optional: pass `'logger' => $monolog` and `'metrics' => fn($e) => ...` for PSR-3 + observability. |
 
-A surface-lock test suite (`tests/SurfaceLockTest.php`) uses Reflection to assert public method signatures, error subclass tree, and namespace accessor presence — any future PR that breaks the public surface fails CI before reaching Packagist. `phpstan analyse` is also clean at level 6.
+A surface-lock test suite (`tests/SurfaceLockTest.php`) uses Reflection to assert public method signatures, error subclass tree, and namespace accessor presence: any future PR that breaks the public surface fails CI before reaching Packagist. `phpstan analyse` is also clean at level 6.
 
 ---
 
@@ -279,4 +279,4 @@ A surface-lock test suite (`tests/SurfaceLockTest.php`) uses Reflection to asser
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE).

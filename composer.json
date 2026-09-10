@@ -1,6 +1,6 @@
 {
   "name": "astroway/sdk",
-  "description": "Official PHP SDK for the AstroWay API — natal, synastry, transits, Vedic, Human Design, Tarot, Numerology, AI horoscopes. Type-safe, retry-aware, OpenAPI 3.1 generated.",
+  "description": "Official PHP SDK for the AstroWay API: natal, synastry, transits, Vedic, Human Design, Tarot, Numerology, AI horoscopes. Type-safe, retry-aware, OpenAPI 3.1 generated.",
   "keywords": [
     "astrology",
     "api",
@@ -18,7 +18,10 @@
   "type": "library",
   "homepage": "https://api.astroway.info/docs/",
   "authors": [
-    { "name": "AstroWay", "email": "astroway.info@gmail.com" }
+    {
+      "name": "AstroWay",
+      "email": "astroway.info@gmail.com"
+    }
   ],
   "support": {
     "issues": "https://github.com/astroway/astroway-php/issues",
@@ -45,8 +48,8 @@
     "guzzlehttp/guzzle": "Battle-tested PSR-18 HTTP client. Auto-discovered if installed.",
     "symfony/http-client": "Symfony's PSR-18 client (use Psr18Client wrapper). Auto-discovered if installed.",
     "nyholm/psr7": "Lightweight PSR-7/17 implementation. Auto-discovered for request/stream factories.",
-    "symfony/cache": "PSR-16 cache adapters for filesystem/redis/memcached — use any of them via the `cache` constructor option.",
-    "monolog/monolog": "PSR-3 logger — pass any Monolog instance via the `logger` constructor option for request/response/error logging."
+    "symfony/cache": "PSR-16 cache adapters for filesystem/redis/memcached, use any of them via the `cache` constructor option.",
+    "monolog/monolog": "PSR-3 logger, pass any Monolog instance via the `logger` constructor option for request/response/error logging."
   },
   "autoload": {
     "psr-4": {
@@ -76,5 +79,6 @@
     }
   },
   "minimum-stability": "stable",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "version": "1.6.1"
 }
