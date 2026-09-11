@@ -140,6 +140,25 @@ echo $report['url']; // signed PDF URL
 Pass `'whitelabel' => true` instead of an object to pull branding from your
 account's stored config (requires a wpUserId-bound key).
 
+### Streaming
+
+Two endpoints answer Server-Sent Events rather than JSON, and their service
+methods return a generator of typed frames:
+
+```php
+foreach ($aw->mcp()->streaming(['message' => 'What is a stellium?']) as $chunk) {
+    if ($chunk->type === 'text_delta') {
+        echo $chunk->text;
+    } elseif ($chunk->type === 'done') {
+        break;
+    }
+}
+```
+
+Any other SSE-capable path goes through `$aw->sse($path, $body)`. A PSR-18
+client reads the whole body before handing it over, so the frames arrive
+together rather than as the model writes them.
+
 ---
 
 ## Error handling

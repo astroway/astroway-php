@@ -13,6 +13,8 @@ use Astroway\Internal\CachePolicy;
 use Astroway\Internal\Idempotency;
 use Astroway\Internal\LoggingClient;
 use Astroway\Internal\RetryClient;
+use Astroway\Streaming\SseParser;
+use Astroway\Streaming\StreamChunk;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Psr\Http\Client\ClientInterface;
@@ -50,7 +52,7 @@ class Astroway
 {
     use HasServices;
 
-    public const VERSION = '1.6.1';
+    public const VERSION = '1.7.0';
 
     public const DEFAULT_BASE_URL = 'https://api.astroway.info/v1';
 
@@ -183,6 +185,49 @@ class Astroway
         }
 
         return $headers;
+    }
+
+    /**
+     * Open a Server-Sent Events call and walk its frames.
+     *
+     * Two endpoints answer `text/event-stream` rather than JSON,
+     * `POST /v1/mcp/streaming` and `POST /v1/mcp/tool-call-stream`, and their
+     * service methods call this. Everything else about the call is unchanged:
+     * the same auth, retries, timeouts and error classification as
+     * {@see self::request()}.
+     *
+     * The frames are parsed after the response is read, not while it arrives:
+     * a PSR-18 client hands back a complete body, so this yields the whole
+     * conversation in order rather than as the model writes it. The endpoints
+     * behind it assemble their answer before sending in any case.
+     *
+     * @param array<string, mixed>|list<mixed>|object|null $body
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     *
+     * @return \Generator<int, StreamChunk>
+     */
+    public function sse(string $path, array|object|null $body = null, array $options = []): \Generator
+    {
+        $opts = $options;
+        $opts['headers'] = array_merge($options['headers'] ?? [], ['Accept' => 'text/event-stream']);
+        if ($body !== null) {
+            $opts['json'] = $body;
+        }
+        /* `cache: false` because a cached stream would replay one caller's
+           answer to another, and the frames are not a value anybody should key
+           on. */
+        $opts['cache'] = false;
+
+        $raw = $this->request('POST', $path, $opts);
+        if (is_string($raw)) {
+            yield from SseParser::parse($raw);
+
+            return;
+        }
+
+        /* A JSON body where SSE was asked for: hand it over as one frame rather
+           than dropping it. A non-2xx has already thrown by this point. */
+        yield new StreamChunk('event', data: is_array($raw) ? $raw : null, rawData: (string) json_encode($raw));
     }
 
     /**

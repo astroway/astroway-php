@@ -137,51 +137,31 @@ final class McpService
     /**
      * MCP Streaming Chat (POST /mcp/streaming).
      *
+     * Server-sent events: iterate the returned generator.
+     *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     *
+     * @return \Generator<int, \Astroway\Streaming\StreamChunk>
      */
-    public function streaming(array|object|null $body = null, array $options = []): mixed
+    public function streaming(array|object|null $body = null, array $options = []): \Generator
     {
-        $opts = [];
-        if ($body !== null) {
-            $opts['json'] = $body;
-        }
-        if (!empty($options['query'])) {
-            $opts['query'] = $options['query'];
-        }
-        if (!empty($options['headers'])) {
-            $opts['headers'] = $options['headers'];
-        }
-        if (isset($options['idempotencyKey'])) {
-            $opts['idempotencyKey'] = $options['idempotencyKey'];
-        }
-
-        return $this->client->request('POST', '/mcp/streaming', $opts);
+        return $this->client->sse('/mcp/streaming', $body, $options);
     }
 
     /**
      * MCP Tool-Call Stream (POST /mcp/tool-call-stream).
      *
+     * Server-sent events: iterate the returned generator.
+     *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
+     *
+     * @return \Generator<int, \Astroway\Streaming\StreamChunk>
      */
-    public function toolCallStream(array|object|null $body = null, array $options = []): mixed
+    public function toolCallStream(array|object|null $body = null, array $options = []): \Generator
     {
-        $opts = [];
-        if ($body !== null) {
-            $opts['json'] = $body;
-        }
-        if (!empty($options['query'])) {
-            $opts['query'] = $options['query'];
-        }
-        if (!empty($options['headers'])) {
-            $opts['headers'] = $options['headers'];
-        }
-        if (isset($options['idempotencyKey'])) {
-            $opts['idempotencyKey'] = $options['idempotencyKey'];
-        }
-
-        return $this->client->request('POST', '/mcp/tool-call-stream', $opts);
+        return $this->client->sse('/mcp/tool-call-stream', $body, $options);
     }
 
     /**

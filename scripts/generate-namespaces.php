@@ -114,7 +114,14 @@ foreach (($spec['paths'] ?? []) as $path => $methods) {
     // them, so this filter needs no per-path list. The explicit skip that stood
     // here went out with the 2.152.1 resync.
     $okContent = $op['responses']['200']['content'] ?? [];
-    if (!isset($okContent['application/json'])) {
+    // Two endpoints answer `text/event-stream` and nothing else. The JSON
+    // filter dropped `mcp()->streaming()` and `mcp()->toolCallStream()` the day
+    // api-calc corrected their declared media type, and neither had ever been
+    // useful: `request()` hands back an unparsed SSE string when the body is
+    // not JSON, so the caller got frames to split by hand. They are emitted as
+    // streaming methods over `Astroway::sse()`.
+    $sseOnly = isset($okContent['text/event-stream']) && !isset($okContent['application/json']);
+    if (!isset($okContent['application/json']) && !$sseOnly) {
         continue;
     }
     // /public/* mirrors keyed endpoints the SDK already exposes.
@@ -135,6 +142,7 @@ foreach (($spec['paths'] ?? []) as $path => $methods) {
         'path' => (string) $path,
         'httpMethod' => $httpMethod,
         'summary' => $op['summary'] ?? null,
+        'sse' => $sseOnly,
     ];
 }
 
@@ -211,7 +219,19 @@ foreach ($byNs as $ns => $items) {
         $lines[] = '    /**';
         $lines[] = "     * {$doc} ({$verb} {$item['path']}).";
         $lines[] = '     *';
-        if ($verb === 'GET') {
+        if ($item['sse'] ?? false) {
+            $lines[] = '     * Server-sent events: iterate the returned generator.';
+            $lines[] = '     *';
+            $lines[] = '     * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.';
+            $lines[] = '     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options';
+            $lines[] = '     *';
+            $lines[] = '     * @return \\Generator<int, \\Astroway\\Streaming\\StreamChunk>';
+            $lines[] = '     */';
+            $lines[] = "    public function {$item['method']}(array|object|null \$body = null, array \$options = []): \Generator";
+            $lines[] = '    {';
+            $lines[] = "        return \$this->client->sse('{$item['path']}', \$body, \$options);";
+            $lines[] = '    }';
+        } elseif ($verb === 'GET') {
             // No body and no idempotency key: neither means anything on a read.
             $lines[] = '     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options';
             $lines[] = '     */';

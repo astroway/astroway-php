@@ -17,7 +17,7 @@ final class AiService
     }
 
     /**
-     * AI Chat (RAG over chart) (POST /ai/chat).
+     * Chart-grounded AI chat (POST /ai/chat).
      *
      * @param array<string, mixed>|list<mixed>|object|null $body  Array, list, or DTO with `toArray()`.
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>, idempotencyKey?: string} $options
