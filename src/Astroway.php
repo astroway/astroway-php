@@ -52,7 +52,7 @@ class Astroway
 {
     use HasServices;
 
-    public const VERSION = '1.7.0';
+    public const VERSION = '1.8.0';
 
     public const DEFAULT_BASE_URL = 'https://api.astroway.info/v1';
 
