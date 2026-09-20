@@ -17,7 +17,8 @@ OpenAPI 3.1: <https://api.astroway.info/v1/openapi.json>
 
 There is no endpoint that turns a city name into coordinates. Resolve the place
 on your side and pass numbers. Every chart call needs `latitude`, `longitude`
-and `timezoneOffset`, and getting the offset wrong moves the houses, not just
+and either `timezoneOffset` or a `timezone` zone name, and getting the offset
+wrong moves the houses, not just
 the clock.
 
 ## Install and construct
@@ -109,13 +110,18 @@ the `data` payload.
 ## The four things agents get wrong
 
 1. **Body keys are the API's spelling, not PHP's.** `timezoneOffset`,
-   `houseSystem`, `latitude`, `longitude`. `lat`, `lng`, `lon`, `tz`,
-   `timezone_offset` and every other casing or separator variant return
+   `houseSystem`, `latitude`, `longitude`, `timezone`. `lat`, `lng`, `lon`,
+   `tz`, `timezone_offset` and every other casing or separator variant return
    `400 INVALID_FIELD` naming the correct field. Nothing falls back silently.
 2. **`time` is `HH:mm:ss`.** `'14:30'` returns `400 INVALID_INPUT`. Pad it.
 3. **`timezoneOffset` is a number of hours from UTC**, `5.75` for Kathmandu,
-   `-4` for New York in summer. A zone name like `'Europe/Kyiv'` is rejected. It
-   is the offset **at the birth moment**, so historical DST matters.
+   `-4` for New York in summer. It is the offset **at the birth moment**, so
+   historical DST matters: Kyiv on 1990-05-15 was `+4`, not `+3`.
+   **When you do not know that offset, send `timezone` instead** and the server
+   works it out: `'timezone' => 'Europe/Kyiv'`, or `'auto'` to take it from the
+   coordinates. It wins when both are sent. It is a zone name, never an offset:
+   `'+03:00'` and `'EST'` are both `400`, and so is `''`, so leave the key out
+   rather than sending an empty one.
 4. **`/chart` returns positions, not labels.** `$chart['houses']['ascendant']`
    and every `$chart['planets'][$i]['longitude']` are ecliptic longitudes in
    degrees. The sign is `(int) ($longitude / 30)` into the twelve and the degree

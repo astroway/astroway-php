@@ -21,6 +21,7 @@ final readonly class VedicDashaRequest
         public ?float $ayanamsaId = null,
         public ?string $startDate = null,
         public ?string $endDate = null,
+        public ?string $timezone = null,
     ) {
         if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
             throw new \InvalidArgumentException("VedicDashaRequest: date must be YYYY-MM-DD, got '{$date}'");
@@ -28,6 +29,7 @@ final readonly class VedicDashaRequest
         if (!preg_match('/^\d{2}:\d{2}:\d{2}$/', $time)) {
             throw new \InvalidArgumentException("VedicDashaRequest: time must be HH:MM:SS, got '{$time}'");
         }
+        Timezone::assertValid($timezone);
     }
 
     /** @return array<string, mixed> */
@@ -44,6 +46,7 @@ final readonly class VedicDashaRequest
             'ayanamsaId' => $this->ayanamsaId,
             'startDate' => $this->startDate,
             'endDate' => $this->endDate,
+            'timezone' => $this->timezone,
         ] as $key => $value) {
             if ($value !== null) {
                 $out[$key] = $value;

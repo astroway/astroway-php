@@ -97,10 +97,10 @@ final class DtoTest extends TestCase
             timezoneOffset: 3,
             latitude: 50.45,
             longitude: 30.52,
-            targetDate: '2027-01-01',
+            transitDate: '2027-01-01',
         ));
         $body = json_decode((string) $mock->requests()[0]->getBody(), true);
-        self::assertSame('2027-01-01', $body['targetDate']);
+        self::assertSame('2027-01-01', $body['transitDate']);
         self::assertEqualsWithDelta(3, $body['timezoneOffset'], 0.0001);
     }
 
@@ -145,5 +145,79 @@ final class DtoTest extends TestCase
         $this->expectException(\Error::class);
         // @phpstan-ignore-next-line — intentional readonly violation
         $b->date = '2000-01-01';
+    }
+
+    public function testBirthDataOmitsTimezoneWhenUnset(): void
+    {
+        $birth = new BirthData(
+            date: '1990-05-15',
+            time: '14:30:00',
+            latitude: 50.45,
+            longitude: 30.52,
+        );
+        self::assertArrayNotHasKey('timezone', $birth->toArray());
+    }
+
+    public function testBirthDataSendsZoneNameBesideTheOffset(): void
+    {
+        $birth = new BirthData(
+            date: '1990-05-15',
+            time: '14:30:00',
+            latitude: 50.45,
+            longitude: 30.52,
+            timezone: 'Europe/Kyiv',
+        );
+        $body = $birth->toArray();
+        self::assertSame('Europe/Kyiv', $body['timezone']);
+        self::assertEqualsWithDelta(0, $body['timezoneOffset'], 0.0001);
+    }
+
+    /**
+     * @return array<string, array{string}>
+     */
+    public static function rejectedTimezones(): array
+    {
+        return [
+            'empty' => [''],
+            'blank' => ['   '],
+            'offset with colon' => ['+03:00'],
+            'offset with prefix' => ['UTC+2'],
+            'bare offset' => ['-5'],
+        ];
+    }
+
+    #[\PHPUnit\Framework\Attributes\DataProvider('rejectedTimezones')]
+    public function testTimezoneRefusesTheShapesTheApiRejects(string $bad): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        new BirthData(
+            date: '1990-05-15',
+            time: '14:30:00',
+            latitude: 1,
+            longitude: 1,
+            timezone: $bad,
+        );
+    }
+
+    public function testTimezoneReachesTransitsAndVedic(): void
+    {
+        $transits = new TransitsRequest(
+            date: '1990-05-15',
+            time: '14:30:00',
+            transitDate: '2027-01-01',
+            latitude: 50.45,
+            longitude: 30.52,
+            timezone: 'Europe/Kyiv',
+        );
+        self::assertSame('Europe/Kyiv', $transits->toArray()['timezone']);
+
+        $vedic = new VedicDashaRequest(
+            date: '1985-07-22',
+            time: '06:45:00',
+            latitude: 1,
+            longitude: 1,
+            timezone: 'auto',
+        );
+        self::assertSame('auto', $vedic->toArray()['timezone']);
     }
 }

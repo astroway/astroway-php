@@ -19,7 +19,10 @@ namespace Astroway\Dto;
  * them now throws instead of charting the Atlantic.
  *
  * $timezoneOffset still defaults to 0, meaning UTC, and is hours rather than
- * minutes: 5.5 for India, 5.75 for Nepal, -3.5 for Newfoundland.
+ * minutes: 5.5 for India, 5.75 for Nepal, -3.5 for Newfoundland. When the
+ * offset for that date is not known, pass $timezone instead: an IANA zone name
+ * such as 'Europe/Kyiv', or 'auto' to take it from the coordinates. It wins
+ * over $timezoneOffset, and the response echoes the offset that was used.
  *
  * Convert to wire format via toArray() — service classes do this automatically
  * when you pass a DTO to a namespace method.
@@ -38,6 +41,7 @@ final readonly class BirthData
         public ?string $zodiacType = null,
         public ?float $ayanamsaId = null,
         public ?bool $cosmogram = null,
+        public ?string $timezone = null,
     ) {
         if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
             throw new \InvalidArgumentException("BirthData: date must be YYYY-MM-DD, got '{$date}'");
@@ -58,6 +62,7 @@ final readonly class BirthData
         if ($longitude < -180 || $longitude > 180) {
             throw new \InvalidArgumentException("BirthData: longitude must be between -180 and 180, got {$longitude}");
         }
+        Timezone::assertValid($timezone);
         if ($timezoneOffset < -14 || $timezoneOffset > 14) {
             throw new \InvalidArgumentException(
                 "BirthData: timezoneOffset is hours from UTC, between -14 and 14, got {$timezoneOffset}. "
@@ -91,6 +96,9 @@ final readonly class BirthData
         }
         if ($this->cosmogram !== null) {
             $out['cosmogram'] = $this->cosmogram;
+        }
+        if ($this->timezone !== null) {
+            $out['timezone'] = $this->timezone;
         }
 
         return $out;

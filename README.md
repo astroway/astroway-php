@@ -87,8 +87,9 @@ echo "Score: {$result['compatibility']['score']}/100 ({$result['compatibility'][
 
 ```php
 $transits = $aw->transits()->compute([
-    'date' => '1990-07-14', 'time' => '14:30:00', 'timezoneOffset' => 3, 'latitude' => 50.45, 'longitude' => 30.52,
-    'targetDate' => '2027-01-01',
+    'date' => '1990-07-14', 'time' => '14:30:00', 'timezone' => 'Europe/Kyiv',
+    'latitude' => 50.45, 'longitude' => 30.52,
+    'transitDate' => '2027-01-01',
 ]);
 ```
 
