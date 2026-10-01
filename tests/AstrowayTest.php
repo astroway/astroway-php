@@ -12,7 +12,6 @@ use Astroway\Errors\RateLimitError;
 use Astroway\Tests\Support\MockHttpClient;
 use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestInterface;
 
 final class AstrowayTest extends TestCase
 {
@@ -266,6 +265,62 @@ final class AstrowayTest extends TestCase
         self::assertSame('GET', $req->getMethod());
         self::assertStringEndsWith('/health', $req->getUri()->getPath());
         self::assertSame('ok', $result['status']);
+    }
+
+    public function testNatalTextsIssuesGetWithKeysJoinedAndLang(): void
+    {
+        $payload = [
+            'lang' => 'uk',
+            'texts' => [
+                'sun.aries' => [
+                    'title' => 'Сонце в Овні',
+                    'body' => 'Перший абзац.',
+                    'kind' => 'planet_in_sign',
+                ],
+            ],
+            'missing' => ['moon.h4'],
+        ];
+        $aw = $this->makeClient([
+            new Response(200, [], json_encode(['ok' => true, 'data' => $payload])),
+        ]);
+        $result = $aw->natalTexts(['sun.aries', 'moon.h4'], 'uk');
+
+        $req = $this->mock->requests()[0];
+        self::assertSame('GET', $req->getMethod());
+        self::assertStringEndsWith('/natal-texts', $req->getUri()->getPath());
+        self::assertSame('', (string) $req->getBody());
+        $query = $req->getUri()->getQuery();
+        self::assertStringContainsString('keys=sun.aries%2Cmoon.h4', $query);
+        self::assertStringContainsString('lang=uk', $query);
+
+        self::assertSame('uk', $result->lang);
+        self::assertSame(['moon.h4'], $result->missing);
+        self::assertArrayHasKey('sun.aries', $result->texts);
+        self::assertSame('planet_in_sign', $result->texts['sun.aries']->kind);
+        self::assertSame('Сонце в Овні', $result->texts['sun.aries']->title);
+        self::assertSame('Перший абзац.', $result->texts['sun.aries']->body);
+    }
+
+    public function testNatalTextsRejectsEmptyKeys(): void
+    {
+        $aw = new Astroway(['apiKey' => 'aw_test_x', 'httpClient' => new MockHttpClient()]);
+        $this->expectException(\InvalidArgumentException::class);
+        $aw->natalTexts([], 'uk');
+    }
+
+    public function testNatalTextsRejectsMoreThan64Keys(): void
+    {
+        $aw = new Astroway(['apiKey' => 'aw_test_x', 'httpClient' => new MockHttpClient()]);
+        $keys = array_map(static fn (int $i): string => "sun.aries{$i}", range(1, 65));
+        $this->expectException(\InvalidArgumentException::class);
+        $aw->natalTexts($keys, 'uk');
+    }
+
+    public function testNatalTextsRejectsEmptyLang(): void
+    {
+        $aw = new Astroway(['apiKey' => 'aw_test_x', 'httpClient' => new MockHttpClient()]);
+        $this->expectException(\InvalidArgumentException::class);
+        $aw->natalTexts(['sun.aries'], '');
     }
 
     /**

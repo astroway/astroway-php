@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Astroway;
 
+use Astroway\Dto\NatalTextsResult;
 use Astroway\Errors\APIConnectionError;
 use Astroway\Errors\ApiError;
 use Astroway\Errors\APITimeoutError;
@@ -52,7 +53,7 @@ class Astroway
 {
     use HasServices;
 
-    public const VERSION = '1.9.0';
+    public const VERSION = '1.10.0';
 
     public const DEFAULT_BASE_URL = 'https://api.astroway.info/v1';
 
@@ -399,6 +400,47 @@ class Astroway
         $data = $this->get('/health');
 
         return $data;
+    }
+
+    /**
+     * Natal texts (static) — `GET /v1/natal-texts`.
+     *
+     * Edited interpretation texts for a chart, no AI at request time. Up to
+     * 64 distinct lowercase keys: planet in sign (`sun.aries`,
+     * `chiron.pisces`, `ascendant.leo`), planet in house (`moon.h4`,
+     * `lilith.h7`), or a major aspect between two of Sun..Pluto
+     * (`sun_moon.trine`; pair order is normalised server side). Duplicates
+     * are removed server side before the 64 cap. `lang` is required, one of
+     * the API's active language codes; a key with no text in that language
+     * comes back in the result's `missing` rather than a text in another
+     * language. One ordinary call (10 credits) regardless of key count, no
+     * AI.
+     *
+     * Hand-written rather than generated: the endpoint predates the bundled
+     * `openapi.json` snapshot, and `scripts/generate-namespaces.php` skips
+     * `/natal-texts` explicitly so a future resync does not collide with
+     * this method.
+     *
+     * @param list<string> $keys
+     */
+    public function natalTexts(array $keys, string $lang): NatalTextsResult
+    {
+        if ($keys === []) {
+            throw new \InvalidArgumentException('natalTexts: keys must not be empty.');
+        }
+        if (count($keys) > 64) {
+            throw new \InvalidArgumentException(
+                sprintf('natalTexts: at most 64 distinct keys per call, got %d.', count($keys))
+            );
+        }
+        if ($lang === '') {
+            throw new \InvalidArgumentException('natalTexts: lang is required.');
+        }
+
+        /** @var array{lang: string, texts: array<string, array{title: string, body: string, kind: string}>, missing?: list<string>} $data */
+        $data = $this->get('/natal-texts', ['keys' => implode(',', $keys), 'lang' => $lang]);
+
+        return NatalTextsResult::fromArray($data);
     }
 
     /**

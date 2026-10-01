@@ -117,6 +117,25 @@ $hd = $aw->humanDesign()->compute([
 echo "{$hd['type']} - {$hd['strategy']} - {$hd['authority']}\n";
 ```
 
+### Natal texts (edited, no AI)
+
+`natalTexts()` is hand-written rather than generated, and returns a typed
+`NatalTextsResult` instead of a raw array:
+
+```php
+$result = $aw->natalTexts(['sun.aries', 'moon.h4', 'sun_moon.trine'], 'uk');
+
+echo $result->texts['sun.aries']->title;
+echo $result->texts['sun.aries']->body;
+foreach ($result->missing as $key) {
+    // no text for $key in 'uk' yet; never filled from another language
+}
+```
+
+Up to 64 lowercase keys per call: a planet in a sign (`sun.aries`), a planet
+in a house (`moon.h4`), or a major aspect between two of Sun..Pluto
+(`sun_moon.trine`). One ordinary call regardless of key count, no AI.
+
 ### White-label PDF report
 
 `/reports/*` endpoints accept an inline `whitelabel` object (the `BrandingObject`

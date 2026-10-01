@@ -128,6 +128,13 @@ foreach (($spec['paths'] ?? []) as $path => $methods) {
     if (str_starts_with((string) $path, '/public/')) {
         continue;
     }
+    // /natal-texts is hand-written on the client as natalTexts(), added ahead
+    // of this resync, because it returns a typed NatalTextsResult rather than
+    // mixed. It shares the 'Reference' tag with paths that stay generated
+    // (reference/signs, reference/planets, ...), so the skip is by path.
+    if ((string) $path === '/natal-texts') {
+        continue;
+    }
     // System endpoints are hand-written on the client as health()/version().
     if (in_array('System', $op['tags'] ?? [], true)) {
         continue;
