@@ -91,4 +91,14 @@ final class SpecSnapshotTest extends TestCase
         }
         self::assertSame([], $untyped);
     }
+
+    public function testSpecCarriesTheCorrectedRequestBodies(): void
+    {
+        // The 2.188.4 snapshot gave each of these another route's body.
+        $spec = $this->spec();
+        $ref = fn (string $p): string => $spec['paths'][$p]['post']['requestBody']['content']['application/json']['schema']['$ref'];
+        self::assertStringEndsWith('/TeamCompatibility', $ref('/business/team-compatibility'));
+        self::assertStringEndsWith('/HoraryPlanetaryHours', $ref('/horary/planetary-hours'));
+        self::assertStringEndsWith('/McpMultiChart', $ref('/mcp/multi-chart-context'));
+    }
 }
