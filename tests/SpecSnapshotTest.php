@@ -101,4 +101,16 @@ final class SpecSnapshotTest extends TestCase
         self::assertStringEndsWith('/HoraryPlanetaryHours', $ref('/horary/planetary-hours'));
         self::assertStringEndsWith('/McpMultiChart', $ref('/mcp/multi-chart-context'));
     }
+
+    public function testSnapshotCarriesThePathsAddedUpTo2239(): void
+    {
+        // Resync 2026-10-08: tarot reading and decks, kundli, five numerology charts.
+        foreach (['/interpret/tarot', '/tarot/decks', '/vedic/kundli', '/numerology/pythagorean/chart', '/numerology/kabbalistic-strict/chart'] as $path) {
+            self::assertArrayHasKey($path, $this->spec()['paths'], $path);
+        }
+        self::assertTrue(method_exists(\Astroway\Namespaces\InterpretService::class, 'tarot'));
+        self::assertTrue(method_exists(\Astroway\Namespaces\TarotService::class, 'decksGet'));
+        self::assertTrue(method_exists(\Astroway\Namespaces\VedicService::class, 'kundli'));
+        self::assertTrue(method_exists(\Astroway\Namespaces\NumerologyService::class, 'pythagoreanChart'));
+    }
 }

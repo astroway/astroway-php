@@ -17,6 +17,24 @@ final class TarotService
     }
 
     /**
+     * Tarot: Decks and Card Art (GET /tarot/decks).
+     *
+     * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
+     */
+    public function decksGet(array $options = []): mixed
+    {
+        $opts = [];
+        if (!empty($options['query'])) {
+            $opts['query'] = $options['query'];
+        }
+        if (!empty($options['headers'])) {
+            $opts['headers'] = $options['headers'];
+        }
+
+        return $this->client->request('GET', '/tarot/decks', $opts);
+    }
+
+    /**
      * Lenormand: All Cards (GET /tarot/lenormand/cards).
      *
      * @param array{headers?: array<string, string>, query?: array<string, scalar|array<int|string, scalar>>} $options
