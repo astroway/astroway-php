@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Astroway;
 
+use Astroway\Auth\AuthService;
 use Astroway\Dto\NatalTextsResult;
 use Astroway\Errors\APIConnectionError;
 use Astroway\Errors\ApiError;
@@ -53,7 +54,7 @@ class Astroway
 {
     use HasServices;
 
-    public const VERSION = '1.11.0';
+    public const VERSION = '1.12.0';
 
     public const DEFAULT_BASE_URL = 'https://api.astroway.info/v1';
 
@@ -400,6 +401,16 @@ class Astroway
         $data = $this->get('/health');
 
         return $data;
+    }
+
+    private ?AuthService $auth = null;
+
+    /**
+     * Calls about the calling key: `$aw->auth()->keys()->me()`.
+     */
+    public function auth(): AuthService
+    {
+        return $this->auth ??= new AuthService($this);
     }
 
     /**

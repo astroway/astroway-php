@@ -136,6 +136,27 @@ Up to 64 lowercase keys per call: a planet in a sign (`sun.aries`), a planet
 in a house (`moon.h4`), or a major aspect between two of Sun..Pluto
 (`sun_moon.trine`). One ordinary call regardless of key count, no AI.
 
+### Chart image (SVG)
+
+```php
+$chart = $aw->chart()->compute(['date' => '1990-07-14', 'time' => '14:30:00', 'timezoneOffset' => 3, 'latitude' => 50.45, 'longitude' => 30.52]);
+$wheel = $aw->render()->wheelWestern(['chart' => $chart, 'options' => ['theme' => 'css']]); // 1 credit: draws the chart you hold
+$grid  = $aw->render()->aspectGrid(['chart' => $chart]);
+$bi    = $aw->render()->biWheel(['natal' => ['chart' => $chart], 'outer' => ['chart' => $partnerChart], 'options' => ['crossAspects' => true]]);
+echo $wheel['svg'];
+```
+
+`theme: 'css'` paints colours as CSS variables (`--aw-ring`, `--aw-fg`...) and adds stable `aw-*` classes, so an SVG inlined into your page takes its colours. The four Western wheels take `labels` (`asc`, `dsc`, `mc`, `ic`, `title`, `desc` and per-body names under `bodies`) for your own language; `crossAspects` on the bi-wheel draws the aspects between the two charts. `['chart' => ...]` is a `/chart` response passed as is, accepted by `wheelWestern()`, `aspectGrid()` and `biWheel()`. From birth data instead, `$aw->render()->wheelWestern([...$birth, 'options' => [...]])` computes the chart too (10 credits). The options are passed through as an array, so any value the API accepts works here. Docs: https://api.astroway.info/en/products/svg-charts/
+
+### Key and balance
+
+```php
+$info = $aw->auth()->keys()->me(); // free, no credits
+echo $info['plan'], ' ', $info['credits_remaining'], ' ', $info['period_end'];
+```
+
+An unmetered key returns null credits and `unlimited: true`.
+
 ### White-label PDF report
 
 `/reports/*` endpoints accept an inline `whitelabel` object (the `BrandingObject`

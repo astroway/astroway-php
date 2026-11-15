@@ -45,6 +45,7 @@ use Astroway\Namespaces\FirdariaService;
 use Astroway\Namespaces\FixedStarsService;
 use Astroway\Namespaces\ForecastCalendarService;
 use Astroway\Namespaces\GauquelinSectorsService;
+use Astroway\Namespaces\GeoService;
 use Astroway\Namespaces\GeodeticService;
 use Astroway\Namespaces\GeomancyService;
 use Astroway\Namespaces\GroupSynastryService;
@@ -111,6 +112,7 @@ use Astroway\Namespaces\TertiaryProgressionsService;
 use Astroway\Namespaces\TransitCalendarService;
 use Astroway\Namespaces\TransitsService;
 use Astroway\Namespaces\TranslateService;
+use Astroway\Namespaces\VastuService;
 use Astroway\Namespaces\VedicService;
 use Astroway\Namespaces\VedicDivisionalService;
 use Astroway\Namespaces\WebhooksService;
@@ -317,6 +319,11 @@ trait HasServices
     public function gauquelinSectors(): GauquelinSectorsService
     {
         return $this->services['gauquelinSectors'] ??= new GauquelinSectorsService($this);
+    }
+
+    public function geo(): GeoService
+    {
+        return $this->services['geo'] ??= new GeoService($this);
     }
 
     public function geodetic(): GeodeticService
@@ -647,6 +654,11 @@ trait HasServices
     public function translate(): TranslateService
     {
         return $this->services['translate'] ??= new TranslateService($this);
+    }
+
+    public function vastu(): VastuService
+    {
+        return $this->services['vastu'] ??= new VastuService($this);
     }
 
     public function vedic(): VedicService

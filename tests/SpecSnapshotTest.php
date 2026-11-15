@@ -59,7 +59,7 @@ final class SpecSnapshotTest extends TestCase
         // filter is enough now that every widget path declares text/html.
         $spec = $this->spec();
         $embed = array_filter(array_keys($spec['paths']), static fn (string $p): bool => str_starts_with($p, '/embed/'));
-        self::assertCount(14, $embed);
+        self::assertCount(17, $embed);
         foreach ($embed as $path) {
             $op = $spec['paths'][$path]['post'] ?? $spec['paths'][$path]['get'];
             self::assertArrayNotHasKey('application/json', $op['responses']['200']['content'], $path);

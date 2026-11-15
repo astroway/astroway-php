@@ -267,6 +267,33 @@ final class AstrowayTest extends TestCase
         self::assertSame('ok', $result['status']);
     }
 
+    public function testAuthKeysMeIssuesGetAndUnwrapsData(): void
+    {
+        $info = [
+            'key_prefix' => 'aw_live_a3f...',
+            'plan' => 'indie',
+            'credits_remaining' => 18432,
+            'credits_total_this_period' => 50000,
+            'period_end' => '2026-06-01T00:00:00.000Z',
+            'status' => 'active',
+            'domain' => 'example.com',
+            'domain_bound_at' => '2026-05-14T18:22:00.000Z',
+            'created_at' => '2026-05-12T08:00:00.000Z',
+            'referrer_source' => 'wp_plugin',
+        ];
+        $aw = $this->makeClient([
+            new Response(200, [], json_encode(['ok' => true, 'data' => $info])),
+        ]);
+        $result = $aw->auth()->keys()->me();
+
+        $req = $this->mock->requests()[0];
+        self::assertSame('GET', $req->getMethod());
+        self::assertStringEndsWith('/v1/auth/keys/me', $req->getUri()->getPath());
+        self::assertSame('', (string) $req->getBody());
+        self::assertSame($info, $result);
+        self::assertSame($aw->auth()->keys(), $aw->auth()->keys());
+    }
+
     public function testNatalTextsIssuesGetWithKeysJoinedAndLang(): void
     {
         $payload = [
